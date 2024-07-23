@@ -1,24 +1,22 @@
 import { useState, useEffect } from 'react';
 import styles from './loading.module.scss';
 
-export default function LoadingStartApp({ onLoadingComplete }) {
+export default function LoadingStartApp() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-   
     const interval = setInterval(() => {
       setProgress(prevProgress => {
         if (prevProgress >= 100) {
           clearInterval(interval);
-          onLoadingComplete();
           return 100;
         }
         return prevProgress + 10;
       });
-    }, 300); 
+    }, 300);
 
-    return () => clearInterval(interval); 
-  }, [onLoadingComplete]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.container}>

@@ -1,18 +1,22 @@
 import mongoose from "mongoose";
 
 const citySchema = new mongoose.Schema({
+  // userId: {
+  //   type: String,
+  //   required: false,
+  // },
   city: {
     type: String,
     default: "world",
     required: false,
   },
   from: {
-    type: String,
+    type: Date,
     default: "From date not provided",
     required: false,
   },
   to: {
-    type: String,
+    type: Date,
     default: "To date not provided",
     required: false,
   },

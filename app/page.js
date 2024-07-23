@@ -1,23 +1,24 @@
 'use client'; 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LoadingStartApp from './components/loading-startapp/LoadingStartApp';
-import styles from './page.module.css';
+import Home from './components/home/Home';
+import './globals.css'; 
 
-export default function Home() {
+export default function MainPage() {
   const [loading, setLoading] = useState(true);
 
-  const handleLoadingComplete = () => {
-    setLoading(false);
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); 
+
+    return () => clearTimeout(timer); 
+  }, []);
 
   if (loading) {
-    return <LoadingStartApp onLoadingComplete={handleLoadingComplete} />;
+    return <LoadingStartApp />;
   }
 
-  return (
-    <main className={styles.main}>
-      <p>Ciao sono main</p>
-    </main>
-  );
+  return <Home />;
 }

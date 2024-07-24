@@ -1,0 +1,72 @@
+.cityCard {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cityCard.selected {
+  border: 2px solid #8673f5;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actionButtons button {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.editForm input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editForm button {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cityInfo {
+  flex-grow: 1;
+}
+
+.cityInfo h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.cityInfo p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.cityCard.selected {
+  border: 2px solid #8673f5;
+}

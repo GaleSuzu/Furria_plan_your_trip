@@ -1,109 +1,152 @@
 .cityCardList {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin: 10px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .title {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .showAllButton {
-    background: none;
-    border: none;
-    color: #8673f5;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
-  
-  .cardsContainer {
-    flex-grow: 1; 
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 15px;
-    padding: 0;
-    list-style: none; 
-  }
-  
-  .cityCard {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    position: relative;
-  }
-  
-  .cityImage {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .cityInfo {
-    flex-grow: 1;
-  }
-  
-  .cityInfo h3 {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-  
-  .cityInfo p {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0;
-  }
-  
-  .countdownButton {
-    background-color: #8673f5;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .addButtonContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; 
-  }
-  
-  .addButton {
-    background-color: #8673f5;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1rem;
+  color: #333;
+}
+
+.showAllButton {
+  background: none;
+  border: none;
+  color: #8673f5;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cardsContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 0;
+  list-style: none;
+}
+
+.cityCard {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cityCard.selected {
+  border: 2px solid #8673f5;
+}
+
+.cityImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.cityInfo {
+  flex-grow: 1;
+}
+
+.cityInfo h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.cityInfo p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.countdownButton {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.addButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.addButton {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actionButtons button {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.editForm input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editForm button {
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

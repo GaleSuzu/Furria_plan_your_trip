@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
-import styles from './citycardlist.module.scss';
+import React, { useState, useEffect } from "react";
+import styles from "./citycardlist.module.scss";
 
-const initialCities = [
+/* const initialCities = [
   { name: 'Milan', date: '5/8 - 12/8', image: '/milan.jpg' },
   { name: 'Barcellona', date: '30/10/2024', image: '/barcellona.jpg' },
   { name: 'Berlin', date: '24/12/2024', image: '/berlin.jpg' }
-];
+]; */
 
 export default function CityCardList() {
-  const [cities, setCities] = useState(initialCities);
+  const [city, setCity] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [editCity, setEditCity] = useState({ name: '', date: '' });
+  const [editCity, setEditCity] = useState({ name: "", date: "" });
 
   const addCity = () => {
-    const newCity = { name: 'New City', date: '1/1 - 1/2', image: '/default.jpg' };
+    const newCity = {
+      name: "New City",
+      date: "1/1 - 1/2",
+      image: "/default.jpg",
+    };
     setCities([...cities, newCity]);
   };
 
@@ -23,7 +27,7 @@ export default function CityCardList() {
   };
 
   const deleteCity = () => {
-    setCities(cities.filter(city => city !== selectedCity));
+    setCities(cities.filter((city) => city !== selectedCity));
     setSelectedCity(null);
   };
 
@@ -33,18 +37,29 @@ export default function CityCardList() {
   };
 
   const saveEditCity = () => {
-    setCities(cities.map(city => (city === selectedCity ? editCity : city)));
+    setCities(cities.map((city) => (city === selectedCity ? editCity : city)));
     setSelectedCity(null);
     setEditMode(false);
   };
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
-    setEditCity(prevState => ({
+    setEditCity((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
+  useEffect(() => {
+    fetch("/api/city", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        setCity(response.data);
+      });
+  }, []);
 
   return (
     <div className={styles.cityCardList}>
@@ -53,10 +68,12 @@ export default function CityCardList() {
         <button className={styles.showAllButton}>Show All</button>
       </div>
       <ul className={styles.cardsContainer}>
-        {cities.map((city, index) => (
+        {city.map((city, index) => (
           <li
             key={index}
-            className={`${styles.cityCard} ${selectedCity === city ? styles.selected : ''}`}
+            className={`${styles.cityCard} ${
+              selectedCity === city ? styles.selected : ""
+            }`}
             onMouseDown={() => {
               setTimeout(() => selectCity(city), 1000);
             }}
@@ -64,10 +81,14 @@ export default function CityCardList() {
               clearTimeout();
             }}
           >
-            <img src={city.image} alt={city.name} className={styles.cityImage} />
+            {/*       <img
+              src={city.image}
+              alt={city.name}
+              className={styles.cityImage}
+            /> */}
             <div className={styles.cityInfo}>
-              <h3>{city.name}</h3>
-              <p>{city.date}</p>
+              <h3>{city.city}</h3>
+              {/*          <p>{city.date}</p> */}
             </div>
             <button className={styles.countdownButton}>Countdown</button>
           </li>
@@ -97,7 +118,9 @@ export default function CityCardList() {
         </div>
       )}
       <div className={styles.addButtonContainer}>
-        <button className={styles.addButton} onClick={addCity}>+</button>
+        <button className={styles.addButton} onClick={addCity}>
+          +
+        </button>
       </div>
     </div>
   );

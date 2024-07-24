@@ -12,12 +12,12 @@ const citySchema = new mongoose.Schema({
   },
   from: {
     type: Date,
-    default: "From date not provided",
+    /*  default: "From date not provided", */
     required: false,
   },
   to: {
     type: Date,
-    default: "To date not provided",
+    /* default: "To date not provided", */
     required: false,
   },
 });

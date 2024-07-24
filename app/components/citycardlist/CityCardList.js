@@ -20,7 +20,7 @@ export default function CityCardList({ list = [] }) {
       </div>
       <ul className={styles.cardsContainer}>
         {list.map((city, index) => (
-          <CityCard key={index} city={city.city} />
+          <CityCard key={index} city={city.city} id={city._id} />
         ))}
       </ul>
       <div className={styles.addButtonContainer}>

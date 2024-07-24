@@ -1,7 +1,8 @@
 import styles from "./citycard.module.scss";
 import { useState } from "react";
+/* import { useRouter } from "next/router"; */
 
-const CityCard = ({ city }) => {
+const CityCard = ({ city, id }) => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editCity, setEditCity] = useState({ name: "", date: "" });
@@ -9,10 +10,7 @@ const CityCard = ({ city }) => {
     setSelectedCity(city);
   };
 
-  const deleteCity = () => {
-    setCities(cities.filter((city) => city !== selectedCity));
-    setSelectedCity(null);
-  };
+  /*   const router = useRouter(); */
 
   const startEditCity = () => {
     setEditCity(selectedCity);
@@ -32,6 +30,23 @@ const CityCard = ({ city }) => {
       [name]: value,
     }));
   };
+  const deleteCity = async () => {
+    try {
+      const response = await fetch(`/api/city/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Network response not Ok!");
+      }
+      /*  router.refresh("/"); */
+    } catch (error) {
+      console.error("Error deleting city:", error);
+    }
+  };
+
   return (
     <>
       <li

@@ -2,9 +2,9 @@
 
 import { useState, useContext } from "react";
 import { globalContext } from "@/app/(context)/Provider";
-import styles from "./tripplanedit.module.scss";
+import styles from "./cityplan.module.scss";
 
-export default function TripPlanEdit() {
+export default function CityPlan() {
   const { setCity } = useContext(globalContext);
   const [formData, setFormData] = useState({
     name: '',
@@ -50,7 +50,7 @@ export default function TripPlanEdit() {
   };
 
   return (
-    <div className={styles.tripPlanEdit}>
+    <div className={styles.cityPlan}>
       <h1>Organizza il tuo viaggio</h1>
       <p>Crea il tuo primo itinerario e preparati al prossimo viaggio</p>
       <form onSubmit={handleSubmit}>

@@ -6,8 +6,8 @@ import CityCard from "../cityCard/CityCard";
 export default function CityCardList({ list = [] }) {
   const router = useRouter();
 
-  const navigateToTripPlanEdit = () => {
-    router.push('/trip-plan-edit');
+  const navigateToCityPlan = () => {
+    router.push('/city-plan');
   };
 
   return (
@@ -22,7 +22,7 @@ export default function CityCardList({ list = [] }) {
         ))}
       </ul>
       <div className={styles.addButtonContainer}>
-        <button className={styles.addButton} onClick={navigateToTripPlanEdit}>
+        <button className={styles.addButton} onClick={navigateToCityPlan}>
           +
         </button>
       </div>

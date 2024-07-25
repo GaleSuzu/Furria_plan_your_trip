@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 50);
 
     return () => clearTimeout(timer);
   }, []);

@@ -1,15 +1,13 @@
 import React from "react";
+import { useRouter } from 'next/navigation';
 import styles from "./citycardlist.module.scss";
 import CityCard from "../cityCard/CityCard";
 
 export default function CityCardList({ list = [] }) {
-  const addCity = () => {
-    const newCity = {
-      name: "New City",
-      date: "1/1 - 1/2",
-      image: "/default.jpg",
-    };
-    setCities([...cities, newCity]);
+  const router = useRouter();
+
+  const navigateToTripPlanEdit = () => {
+    router.push('/trip-plan-edit');
   };
 
   return (
@@ -24,7 +22,7 @@ export default function CityCardList({ list = [] }) {
         ))}
       </ul>
       <div className={styles.addButtonContainer}>
-        <button className={styles.addButton} onClick={addCity}>
+        <button className={styles.addButton} onClick={navigateToTripPlanEdit}>
           +
         </button>
       </div>

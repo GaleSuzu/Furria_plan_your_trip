@@ -1,35 +1,15 @@
 import styles from "./citycard.module.scss";
-import { useState } from "react";
-/* import { useRouter } from "next/router"; */
+import { useRef, useState, useEffect } from "react";
 
 const CityCard = ({ city, id }) => {
-  const [selectedCity, setSelectedCity] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const [editCity, setEditCity] = useState({ name: "", date: "" });
-  const selectCity = (city) => {
-    setSelectedCity(city);
+  const cityInput = useRef(null);
+  const [isActive, setIsActive] = useState(false);
+  const [cityName, setCityName] = useState(city);
+
+  const handleActive = () => {
+    setIsActive(!isActive);
   };
 
-  /*   const router = useRouter(); */
-
-  const startEditCity = () => {
-    setEditCity(selectedCity);
-    setEditMode(true);
-  };
-
-  const saveEditCity = () => {
-    setCities(cities.map((city) => (city === selectedCity ? editCity : city)));
-    setSelectedCity(null);
-    setEditMode(false);
-  };
-
-  const handleEditChange = (e) => {
-    const { name, value } = e.target;
-    setEditCity((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
   const deleteCity = async () => {
     try {
       const response = await fetch(`/api/city/${id}`, {
@@ -41,52 +21,55 @@ const CityCard = ({ city, id }) => {
       if (!response.ok) {
         throw new Error("Network response not Ok!");
       }
-      /*  router.refresh("/"); */
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting city:", error);
     }
   };
 
+  const putCity = async () => {
+    const updateCity = {
+      city: cityInput.current.value,
+    };
+
+    try {
+      const response = await fetch(`/api/city/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateCity),
+      });
+      if (!response.ok) {
+        throw new Error("City not modified!");
+      }
+      setIsActive(false);
+      setCityName(updateCity.city);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  useEffect(() => {
+    setCityName(city);
+  }, [city]);
   return (
     <>
-      <li
-        className={`${styles.cityCard} ${
-          selectedCity === city ? styles.selected : ""
-        }`}
-        onMouseDown={() => {
-          setTimeout(() => selectCity(city), 1000);
-        }}
-        onMouseUp={() => {
-          clearTimeout();
-        }}
-      >
+      <li className={styles.cityCard}>
         <div className={styles.cityInfo}>
-          <h3>{city}</h3>
+          <input
+            disabled={!isActive}
+            type="text"
+            defaultValue={cityName}
+            ref={cityInput}
+          />
+          <h3>{cityName}</h3>
         </div>
+        <button onClick={handleActive}>
+          {isActive ? "Cancel" : "Modifica"}
+        </button>
+        {isActive && <button onClick={putCity}>Save</button>}
+        <button onClick={deleteCity}>Elimina</button>
       </li>
-      {selectedCity && !editMode && (
-        <div className={styles.actionButtons}>
-          <button onClick={startEditCity}>Modifica</button>
-          <button onClick={deleteCity}>Elimina</button>
-        </div>
-      )}
-      {editMode && (
-        <div className={styles.editForm}>
-          <input
-            type="text"
-            name="name"
-            value={editCity.name}
-            onChange={handleEditChange}
-          />
-          <input
-            type="text"
-            name="date"
-            value={editCity.date}
-            onChange={handleEditChange}
-          />
-          <button onClick={saveEditCity}>Salva</button>
-        </div>
-      )}
     </>
   );
 };

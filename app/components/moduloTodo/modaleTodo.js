@@ -7,6 +7,9 @@ const modaleTodo = () => {
       <div>
         <h2 className={styles.title}></h2>
       </div>
+      <div className={styles.calendario}>
+        <Calendar />
+      </div>
 
       <div className={styles.luogo}>
         <input type="text" placeholder="Luogo" />

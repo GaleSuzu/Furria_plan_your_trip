@@ -1,13 +1,26 @@
-import React from "react";
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./citycardlist.module.scss";
 import CityCard from "../cityCard/CityCard";
 
-export default function CityCardList({ list = [] }) {
+export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();
+  const [filteredCities, setFilteredCities] = useState(list);
+
+  useEffect(() => {
+    if (searchQuery) {
+      setFilteredCities(
+        list.filter((city) =>
+          city.city.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredCities(list);
+    }
+  }, [searchQuery, list]);
 
   const navigateToCityPlan = () => {
-    router.push('/city-plan');
+    router.push("/city-plan");
   };
 
   return (
@@ -17,7 +30,7 @@ export default function CityCardList({ list = [] }) {
         <button className={styles.showAllButton}>Show All</button>
       </div>
       <ul className={styles.cardsContainer}>
-        {list.map((city, index) => (
+        {filteredCities.map((city, index) => (
           <CityCard key={index} city={city.city} id={city._id} />
         ))}
       </ul>

@@ -6,11 +6,13 @@ const CityCard = ({ city, id, onClick }) => {
   const [isActive, setIsActive] = useState(false);
   const [cityName, setCityName] = useState(city);
 
-  const handleActive = () => {
+  const handleActive = (e) => {
+    e.stopPropagation();
     setIsActive(!isActive);
   };
 
-  const deleteCity = async () => {
+  const deleteCity = async (e) => {
+    e.stopPropagation();
     try {
       const response = await fetch(`/api/city/${id}`, {
         method: "DELETE",
@@ -27,7 +29,8 @@ const CityCard = ({ city, id, onClick }) => {
     }
   };
 
-  const putCity = async () => {
+  const putCity = async (e) => {
+    e.stopPropagation();
     const updateCity = {
       city: cityInput.current.value,
     };
@@ -49,6 +52,11 @@ const CityCard = ({ city, id, onClick }) => {
       console.error("Error:", error);
     }
   };
+
+  const handleInputClick = (e) => {
+    e.stopPropagation();
+  };
+
   useEffect(() => {
     setCityName(city);
   }, [city]);
@@ -61,6 +69,7 @@ const CityCard = ({ city, id, onClick }) => {
             type="text"
             defaultValue={cityName}
             ref={cityInput}
+            onClick={handleInputClick}
           />
           <h3>{cityName}</h3>
         </div>

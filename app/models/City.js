@@ -7,17 +7,15 @@ const citySchema = new mongoose.Schema({
   // },
   city: {
     type: String,
-    default: "world",
+    default: "Somewhere",
     required: false,
   },
   from: {
     type: Date,
-    /*  default: "From date not provided", */
     required: false,
   },
   to: {
     type: Date,
-    /* default: "To date not provided", */
     required: false,
   },
 });

@@ -39,6 +39,8 @@ export default function CityCardList({ list = [], searchQuery }) {
             key={index}
             city={city.city}
             id={city._id}
+            from={city.from}
+            to={city.to}
             onClick={() => handleCardClick(city._id, city.city)}
           />
         ))}

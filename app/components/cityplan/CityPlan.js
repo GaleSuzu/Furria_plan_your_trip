@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useContext } from "react";
 import { globalContext } from "@/app/(context)/Provider";
@@ -7,9 +7,9 @@ import styles from "./cityplan.module.scss";
 export default function CityPlan() {
   const { setCity } = useContext(globalContext);
   const [formData, setFormData] = useState({
-    name: '',
-    dateStart: '',
-    dateEnd: '',
+    name: "",
+    dateStart: "",
+    dateEnd: "",
   });
 
   const handleChange = (e) => {
@@ -23,29 +23,28 @@ export default function CityPlan() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/city', {
-        method: 'POST',
+      const response = await fetch("/api/city", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           city: formData.name,
           date: `${formData.dateStart} - ${formData.dateEnd}`,
-          image: '/default.jpg', 
+          image: "/default.jpg",
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Errore nella creazione della città');
+        throw new Error("Errore nella creazione della città");
       }
 
       const result = await response.json();
       setCity((prevState) => [...prevState, result.data]);
 
-      
-      window.location.href = '/';
+      window.location.href = "/";
     } catch (error) {
-      console.error('Errore nella pianificazione del viaggio:', error);
+      console.error("Errore nella pianificazione del viaggio:", error);
     }
   };
 
@@ -63,7 +62,7 @@ export default function CityPlan() {
           onChange={handleChange}
           required
         />
-        <label htmlFor="dateStart">Date:</label>
+        <label htmlFor="dateStart">Inizio:</label>
         <input
           type="date"
           id="dateStart"
@@ -72,6 +71,7 @@ export default function CityPlan() {
           onChange={handleChange}
           required
         />
+        <label htmlFor="dateEnd">Fine:</label>
         <input
           type="date"
           id="dateEnd"

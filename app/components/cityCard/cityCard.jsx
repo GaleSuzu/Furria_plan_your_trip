@@ -1,7 +1,7 @@
 import styles from "./citycard.module.scss";
 import { useRef, useState, useEffect } from "react";
 
-const CityCard = ({ city, id, onClick }) => {
+const CityCard = ({ city, id, onClick, from, to }) => {
   const cityInput = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [cityName, setCityName] = useState(city);
@@ -60,6 +60,7 @@ const CityCard = ({ city, id, onClick }) => {
   useEffect(() => {
     setCityName(city);
   }, [city]);
+
   return (
     <>
       <li className={styles.cityCard} onClick={() => onClick(id)}>
@@ -72,6 +73,8 @@ const CityCard = ({ city, id, onClick }) => {
             onClick={handleInputClick}
           />
           <h3>{cityName}</h3>
+          <p>Dal:{new Date(from).toLocaleDateString()}</p>
+          <p>Al:{new Date(to).toLocaleDateString()}</p>
         </div>
         <button onClick={handleActive}>
           {isActive ? "Cancel" : "Modifica"}

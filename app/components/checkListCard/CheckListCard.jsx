@@ -49,7 +49,6 @@ const CheckListCard = ({ todo }) => {
       if (!response.ok) {
         throw new Error("Check item not deleted!");
       }
-      // Handle UI update after successful deletion if necessary
     } catch (error) {
       console.error("Error:", error);
     }

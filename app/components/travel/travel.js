@@ -40,7 +40,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       </header>
       <div className={styles.body}>
         <nav className={styles.navbar}>
-          <button className={styles.navButton}>
+          <button className={`${styles.navButton} ${styles.activeButton}`}>
             <FaSuitcase />
             <span>My Journey</span>
           </button>

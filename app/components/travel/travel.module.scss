@@ -4,6 +4,7 @@
     border-radius: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
+    padding-bottom: 80px;
   }
   
   .header {
@@ -110,12 +111,38 @@
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  
+  .todoContent p {
+    margin: 5px 0;
+  }
+  
+  .todoActions {
+    display: flex;
+    gap: 10px; 
+  }
+  
+  .icon {
+    cursor: pointer;
+    color: #878FE0; 
+    transition: color 0.3s;
+  }
+  
+  .icon:hover {
+    color: #8673f5; 
   }
   
   .addButtonContainer {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    position: fixed;
+    bottom: 60px; 
+    left: 0;
+    right: 0;
+    z-index: 10;
   }
   
   .addButton {

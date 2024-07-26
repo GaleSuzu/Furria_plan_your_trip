@@ -9,10 +9,6 @@ import styles from "./travel.module.scss";
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const [isCheckListVisible, setIsCheckListVisible] = useState(true);
 
-  const toggleCheckListVisibility = () => {
-    setIsCheckListVisible(true);
-  };
-
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
       <div className={styles.countdown}>
@@ -54,7 +50,6 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             className={`${styles.navButton} ${
               isCheckListVisible ? styles.activeButton : ""
             }`}
-            onClick={toggleCheckListVisibility}
           >
             <FaSuitcase />
             <span>My Journey</span>

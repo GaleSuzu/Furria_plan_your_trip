@@ -32,6 +32,7 @@ const CheckListCard = ({ todo }) => {
         throw new Error("Check item not modified!");
       }
       setIsActive(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }
@@ -46,6 +47,7 @@ const CheckListCard = ({ todo }) => {
       if (!response.ok) {
         throw new Error("Check item not deleted!");
       }
+      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }

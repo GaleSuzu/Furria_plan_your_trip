@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.todoContent {
+  flex-grow: 1;
+}
+
 .todoContent p {
   margin: 3px 0;
   font-size: 0.9rem;
@@ -27,4 +31,61 @@
 
 .icon:hover {
   color: #8673f5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8673f5;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 0.9rem;
+  width: 48%;
+}
+
+.form button .icon {
+  margin-right: 5px;
+}
+
+.form button:hover {
+  background-color: #6a5fc7;
+  transform: scale(1.05);
+}
+
+.cancelButton {
+  background-color: #ccc;
+}
+
+.cancelButton:hover {
+  background-color: #999;
 }

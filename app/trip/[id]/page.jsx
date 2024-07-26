@@ -2,6 +2,7 @@
 import { useParams, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Travel from "@/app/components/travel/travel";
+import ModaleTodo from "@/app/components/modaleTodo/modaleTodo";
 
 const Trip = () => {
   const { id } = useParams();
@@ -9,6 +10,7 @@ const Trip = () => {
   const name = searchParams.get("name");
   const [todos, setTodos] = useState([]);
   const [cityDate, setCityDate] = useState(new Date());
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -32,9 +34,18 @@ const Trip = () => {
     }
   }, [id]);
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div>
-      <Travel cityName={name} cityDate={cityDate} todos={todos} />
+      <Travel cityName={name} cityDate={cityDate} todos={todos} onAddTodo={handleOpenModal} />
+      {showModal && <ModaleTodo cityId={id} onClose={handleCloseModal} />}
     </div>
   );
 };

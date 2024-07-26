@@ -61,7 +61,7 @@
     margin: 0;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .navbar {
@@ -69,8 +69,8 @@
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    margin: 0 -20px; 
     margin-bottom: 20px;
+    margin: 0 -20px;
   }
   
   .navButton {
@@ -85,8 +85,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
     font-size: 0.8rem;
-    flex-grow: 1; 
-    margin: 0 5px; 
+    flex-grow: 1;
+    margin: 0 5px;
   }
   
   .navButton:hover {
@@ -118,14 +118,13 @@
     margin: 20px 0;
   }
   
-  .addButton {
+  .addTodoButton {
     background-color: #8673f5;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,8 +133,8 @@
     transition: background-color 0.3s, transform 0.3s;
   }
   
-  .addButton:hover {
+  .addTodoButton:hover {
     background-color: #6a5fc7;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   

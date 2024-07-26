@@ -6,7 +6,7 @@ import Countdown from 'react-countdown';
 import CheckList from '../checklist/CheckList';
 import styles from './travel.module.scss';
 
-const Travel = ({ cityName, cityDate, todos }) => {
+const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
       <div className={styles.countdown}>
@@ -55,7 +55,7 @@ const Travel = ({ cityName, cityDate, todos }) => {
         </nav>
         <CheckList todos={todos} />
         <div className={styles.addButtonContainer}>
-          <button className={styles.addButton}>+</button>
+          <button className={styles.addButton} onClick={onAddTodo}>Add Todo</button>
         </div>
       </div>
     </div>

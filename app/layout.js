@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import LoadingStartApp from './components/loading-startapp/LoadingStartApp';
 import Context from './(context)/Provider';
 import Navbar from './components/navbar/Navbar';
@@ -8,29 +9,36 @@ import Footer from './components/footer/Footer';
 import './globals.css';
 
 function MainLayout({ children }) {
-  const [loading, setLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     if (!sessionStorage.getItem('loadingShown')) {
       const timer = setTimeout(() => {
-        setLoading(false);
+        setInitialLoading(false);
         sessionStorage.setItem('loadingShown', 'true');
       }, 3000);
 
       return () => clearTimeout(timer);
     } else {
-      setLoading(false);
+      setInitialLoading(false);
     }
   }, []);
 
-  const path = window.location.pathname;
+  const path = router.pathname;
   const showNavbarAndFooter = path !== '/city-plan';
 
   return (
     <>
-      {showNavbarAndFooter && <Navbar />}
-      {loading ? <LoadingStartApp /> : children}
-      {showNavbarAndFooter && <Footer />}
+      {initialLoading ? (
+        <LoadingStartApp />
+      ) : (
+        <>
+          {showNavbarAndFooter && <Navbar />}
+          {children}
+          {showNavbarAndFooter && <Footer />}
+        </>
+      )}
     </>
   );
 }

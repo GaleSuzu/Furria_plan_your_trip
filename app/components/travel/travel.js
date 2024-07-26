@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
-import Notes from "../notes/Notes"; 
-import Budget from "../budget/Budget"; 
+import Notes from "../notes/Notes";
+import Budget from "../budget/Budget";
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const [isCheckListVisible, setIsCheckListVisible] = useState(true);
-
-
 
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
@@ -50,29 +48,15 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       </header>
       <div className={styles.body}>
         <nav className={styles.navbar}>
-          <button
-            className={`${styles.navButton} ${
-             isCheckListVisible ? styles.activeButton : ""
-            }`}
-          >
+          <button className={styles.navButton}>
             <FaSuitcase />
             <span>My Journey</span>
           </button>
-          <button
-            className={`${styles.navButton} ${
-              activeSection === "notes" ? styles.activeButton : ""
-            }`}
-            onClick={() => setActiveSection("notes")}
-          >
+          <button className={styles.navButton}>
             <FaStickyNote />
             <span>My Notes</span>
           </button>
-          <button
-            className={`${styles.navButton} ${
-              activeSection === "budget" ? styles.activeButton : ""
-            }`}
-            onClick={() => setActiveSection("budget")}
-          >
+          <button className={styles.navButton}>
             <FaMoneyBill />
             <span>Budget</span>
           </button>
@@ -87,8 +71,6 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             </div>
           </>
         )}
-        {activeSection === "notes" && <Notes />}
-        {activeSection === "budget" && <Budget />}
       </div>
     </div>
   );

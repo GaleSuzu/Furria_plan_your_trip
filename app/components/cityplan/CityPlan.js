@@ -1,46 +1,32 @@
 "use client";
 
-import { useState, useContext } from "react";
-import { globalContext } from "@/app/(context)/Provider";
+import { useState } from "react";
 import styles from "./cityplan.module.scss";
 
 export default function CityPlan() {
-  const { setCity } = useContext(globalContext);
-  const [formData, setFormData] = useState({
-    name: "",
-    dateStart: "",
-    dateEnd: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  const [city, setCity] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newTripData = {
+      city: city,
+      from: startDate,
+      to: endDate,
+    };
     try {
       const response = await fetch("/api/city", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          city: formData.name,
-          date: `${formData.dateStart} - ${formData.dateEnd}`,
-          image: "/default.jpg",
-        }),
+        body: JSON.stringify(newTripData),
       });
 
       if (!response.ok) {
         throw new Error("Errore nella creazione della città");
       }
-
-      const result = await response.json();
-      setCity((prevState) => [...prevState, result.data]);
 
       window.location.href = "/";
     } catch (error) {
@@ -58,8 +44,8 @@ export default function CityPlan() {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
-          onChange={handleChange}
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
           required
         />
         <label htmlFor="dateStart">Inizio:</label>
@@ -67,8 +53,8 @@ export default function CityPlan() {
           type="date"
           id="dateStart"
           name="dateStart"
-          value={formData.dateStart}
-          onChange={handleChange}
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
           required
         />
         <label htmlFor="dateEnd">Fine:</label>
@@ -76,8 +62,8 @@ export default function CityPlan() {
           type="date"
           id="dateEnd"
           name="dateEnd"
-          value={formData.dateEnd}
-          onChange={handleChange}
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
           required
         />
         <button type="submit">Pianifica</button>

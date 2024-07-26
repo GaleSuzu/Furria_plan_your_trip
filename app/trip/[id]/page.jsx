@@ -1,12 +1,14 @@
 "use client";
 import { useParams, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import Travel from "@/app/components/travel/travel";
 
 const Trip = () => {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
   const [todos, setTodos] = useState([]);
+  const [cityDate, setCityDate] = useState(new Date());
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -17,6 +19,9 @@ const Trip = () => {
         }
         const data = await response.json();
         setTodos(data.data);
+        if (data.data.length > 0) {
+          setCityDate(new Date(data.data[0].date));
+        }
       } catch (error) {
         console.error(error);
       }
@@ -29,18 +34,7 @@ const Trip = () => {
 
   return (
     <div>
-      <p>City ID: {id}</p>
-      <p>City Name: {name}</p>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo._id}>
-            <p>Date: {new Date(todo.date).toLocaleDateString()}</p>
-            <p>Time: {todo.time}</p>
-            <p>Place: {todo.place}</p>
-            <p>Text: {todo.text}</p>
-          </li>
-        ))}
-      </ul>
+      <Travel cityName={name} cityDate={cityDate} todos={todos} />
     </div>
   );
 };

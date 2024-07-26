@@ -9,7 +9,9 @@ import Budget from "../budget/Budget";
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
-  const [activeSection, setActiveSection] = useState("journey");
+  const [isCheckListVisible, setIsCheckListVisible] = useState(true);
+
+
 
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
@@ -50,9 +52,8 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
         <nav className={styles.navbar}>
           <button
             className={`${styles.navButton} ${
-              activeSection === "journey" ? styles.activeButton : ""
+             isCheckListVisible ? styles.activeButton : ""
             }`}
-            onClick={() => setActiveSection("journey")}
           >
             <FaSuitcase />
             <span>My Journey</span>
@@ -76,7 +77,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <span>Budget</span>
           </button>
         </nav>
-        {activeSection === "journey" && (
+        {isCheckListVisible && (
           <>
             <CheckList list={todos} />
             <div className={styles.addButtonContainer}>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "@/app/components/checkListCard/CheckListCard.module.scss";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import SaveIcon from "@mui/icons-material/Save";
+import CloseIcon from "@mui/icons-material/Close";
 
 const CheckListCard = ({ todo }) => {
   const [isActive, setIsActive] = useState(false);
@@ -47,7 +49,7 @@ const CheckListCard = ({ todo }) => {
       if (!response.ok) {
         throw new Error("Check item not deleted!");
       }
-      window.location.reload();
+      // Handle UI update after successful deletion if necessary
     } catch (error) {
       console.error("Error:", error);
     }
@@ -56,17 +58,8 @@ const CheckListCard = ({ todo }) => {
   return (
     <li className={styles.checkItem}>
       <div className={styles.todoContent}>
-        <p className={styles.date}>
-          Date: {new Date(todo.date).toLocaleDateString()}
-        </p>
-        <p className={styles.time}>Time: {todo.time}</p>
-        <p className={styles.place}>Place: {todo.place}</p>
-        <p className={styles.text}>Text: {todo.text}</p>
-      </div>
-      <div className={styles.todoActions}>
-        <FaEdit className={styles.icon} onClick={handleActive} />
         {isActive ? (
-          <form onSubmit={editTodo}>
+          <form onSubmit={editTodo} className={styles.form}>
             <input
               type="date"
               defaultValue={new Date(todo.date).toISOString().split("T")[0]}
@@ -87,14 +80,33 @@ const CheckListCard = ({ todo }) => {
               defaultValue={todo.text}
               onChange={(e) => (todo.text = e.target.value)}
             />
-            <button type="submit">Save</button>
-            <button type="button" onClick={handleActive}>
-              Cancel
-            </button>
+            <div className={styles.formButtons}>
+              <button type="submit">
+                <SaveIcon className={styles.icon} /> Save
+              </button>
+              <button
+                type="button"
+                onClick={handleActive}
+                className={styles.cancelButton}
+              >
+                <CloseIcon className={styles.icon} /> Cancel
+              </button>
+            </div>
           </form>
         ) : (
-          <FaTrash className={styles.icon} onClick={deleteTodo} />
+          <>
+            <p className={styles.date}>
+              Date: {new Date(todo.date).toLocaleDateString()}
+            </p>
+            <p className={styles.time}>Time: {todo.time}</p>
+            <p className={styles.place}>Place: {todo.place}</p>
+            <p className={styles.text}>Text: {todo.text}</p>
+          </>
         )}
+      </div>
+      <div className={styles.todoActions}>
+        <FaEdit className={styles.icon} onClick={handleActive} />
+        {!isActive && <FaTrash className={styles.icon} onClick={deleteTodo} />}
       </div>
     </li>
   );

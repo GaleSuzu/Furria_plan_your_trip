@@ -18,6 +18,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
     setIsWalletVisible(false);
     setIsNoteVisible(false);
   };
+
   const handleWallet = () => {
     setIsCheckListVisible(false);
     setIsNoteVisible(false);
@@ -67,15 +68,30 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       </header>
       <div className={styles.body}>
         <nav className={styles.navbar}>
-          <button className={styles.navButton} onClick={handleChecklist}>
+          <button
+            className={`${styles.navButton} ${
+              isCheckListVisible ? styles.activeButton : ""
+            }`}
+            onClick={handleChecklist}
+          >
             <FaSuitcase />
             <span>My Journey</span>
           </button>
-          <button className={styles.navButton} onClick={handleNotes}>
+          <button
+            className={`${styles.navButton} ${
+              isNoteVisible ? styles.activeButton : ""
+            }`}
+            onClick={handleNotes}
+          >
             <FaStickyNote />
             <span>My Notes</span>
           </button>
-          <button className={styles.navButton} onClick={handleWallet}>
+          <button
+            className={`${styles.navButton} ${
+              isWalletVisible ? styles.activeButton : ""
+            }`}
+            onClick={handleWallet}
+          >
             <FaMoneyBill />
             <span>Budget</span>
           </button>
@@ -90,16 +106,8 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             </div>
           </>
         )}
-        {isWalletVisible && (
-          <>
-            <Budget />
-          </>
-        )}
-        {isNoteVisible && (
-          <>
-            <Notes />
-          </>
-        )}
+        {isWalletVisible && <Budget />}
+        {isNoteVisible && <Notes />}
       </div>
     </div>
   );

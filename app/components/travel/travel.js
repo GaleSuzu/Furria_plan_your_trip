@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
+  const [isCheckListVisible, setIsCheckListVisible] = useState(false);
+
+  const toggleCheckListVisibility = () => {
+    setIsCheckListVisible(!isCheckListVisible);
+  };
+
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
       <div className={styles.countdown}>
@@ -44,7 +50,12 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       </header>
       <div className={styles.body}>
         <nav className={styles.navbar}>
-          <button className={`${styles.navButton} ${styles.activeButton}`}>
+          <button
+            className={`${styles.navButton} ${
+              isCheckListVisible ? styles.activeButton : ""
+            }`}
+            onClick={toggleCheckListVisibility}
+          >
             <FaSuitcase />
             <span>My Journey</span>
           </button>
@@ -57,12 +68,16 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <span>Budget</span>
           </button>
         </nav>
-        <CheckList list={todos} />
-        <div className={styles.addButtonContainer}>
-          <button className={styles.addButton} onClick={onAddTodo}>
-            Add Todo
-          </button>
-        </div>
+        {isCheckListVisible && (
+          <>
+            <CheckList list={todos} />
+            <div className={styles.addButtonContainer}>
+              <button className={styles.addButton} onClick={onAddTodo}>
+                Add Todo
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

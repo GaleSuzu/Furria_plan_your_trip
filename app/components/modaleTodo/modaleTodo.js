@@ -37,8 +37,8 @@ const ModaleTodo = ({ cityId, onClose }) => {
         console.error(`Error ${response.status}: ${errorText}`);
         throw new Error("Failed to create todo");
       }
-
       onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }

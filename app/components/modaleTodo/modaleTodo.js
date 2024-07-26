@@ -1,16 +1,14 @@
 import { useState } from "react";
-import Calendar from "react-calendar";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import styles from "./modaleTodo.module.scss";
+import { FaMapMarkerAlt, FaClock, FaStickyNote } from "react-icons/fa";
 
 const ModaleTodo = ({ cityId, onClose }) => {
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [time, setTime] = useState("");
   const [text, setText] = useState("");
-
-  const handleDateChange = (newDate) => {
-    setDate(newDate);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,38 +48,56 @@ const ModaleTodo = ({ cityId, onClose }) => {
       <div className={styles.modalContent}>
         <h2 className={styles.title}>Add Todo</h2>
         <form onSubmit={handleSubmit}>
-          <div className={styles.calendario}>
-            <Calendar
-              onChange={handleDateChange}
-              value={date}
-              className={styles.reactCalendar}
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Date</label>
+            <DatePicker
+              selected={date}
+              onChange={(date) => setDate(date)}
+              className={styles.datePicker}
             />
           </div>
-          <div className={styles.luogo}>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>
+              <FaMapMarkerAlt className={styles.icon} /> Place
+            </label>
             <input
               type="text"
-              placeholder="Place"
+              placeholder="Enter place"
               value={place}
               onChange={(e) => setPlace(e.target.value)}
+              className={styles.input}
             />
           </div>
-          <div className={styles.orario}>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>
+              <FaClock className={styles.icon} /> Time
+            </label>
             <input
-              type="text"
-              placeholder="Time (HH:MM)"
+              type="time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
+              className={styles.input}
             />
           </div>
-          <div className={styles.testo}>
-            <input
-              type="text"
-              placeholder="Text"
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>
+              <FaStickyNote className={styles.icon} /> Text
+            </label>
+            <textarea
+              placeholder="Enter details"
               value={text}
               onChange={(e) => setText(e.target.value)}
-            />
+              className={styles.textarea}
+            ></textarea>
           </div>
-          <button type="submit">Add Todo</button>
+          <div className={styles.buttonGroup}>
+            <button type="submit" className={styles.submitButton}>
+              Add Todo
+            </button>
+            <button type="button" className={styles.cancelButton} onClick={onClose}>
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>

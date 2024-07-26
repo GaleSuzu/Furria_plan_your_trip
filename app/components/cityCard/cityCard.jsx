@@ -1,5 +1,9 @@
 import styles from "./citycard.module.scss";
 import { useRef, useState, useEffect } from "react";
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CloseIcon from '@mui/icons-material/Close';
 
 const CityCard = ({ city, id, onClick, from, to }) => {
   const cityInput = useRef(null);
@@ -65,22 +69,33 @@ const CityCard = ({ city, id, onClick, from, to }) => {
     <>
       <li className={styles.cityCard} onClick={() => onClick(id)}>
         <div className={styles.cityInfo}>
-          <input
-            disabled={!isActive}
-            type="text"
-            defaultValue={cityName}
-            ref={cityInput}
-            onClick={handleInputClick}
-          />
-          <h3>{cityName}</h3>
-          <p>Dal:{new Date(from).toLocaleDateString()}</p>
-          <p>Al:{new Date(to).toLocaleDateString()}</p>
+          {isActive ? (
+            <input
+              type="text"
+              defaultValue={cityName}
+              ref={cityInput}
+              onClick={handleInputClick}
+              className={styles.cityInput}
+            />
+          ) : (
+            <h3>{cityName}</h3>
+          )}
+          <p>Dal: {new Date(from).toLocaleDateString()}</p>
+          <p>Al: {new Date(to).toLocaleDateString()}</p>
         </div>
-        <button onClick={handleActive}>
-          {isActive ? "Cancel" : "Modifica"}
-        </button>
-        {isActive && <button onClick={putCity}>Save</button>}
-        <button onClick={deleteCity}>Elimina</button>
+        <div className={styles.actionButtons}>
+          <button onClick={handleActive}>
+            {isActive ? <CloseIcon className={styles.icon} /> : <EditIcon className={styles.icon} />}
+          </button>
+          {isActive && (
+            <button onClick={putCity}>
+              <SaveIcon className={styles.icon} />
+            </button>
+          )}
+          <button onClick={deleteCity}>
+            <DeleteIcon className={styles.icon} />
+          </button>
+        </div>
       </li>
     </>
   );

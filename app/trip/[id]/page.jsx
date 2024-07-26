@@ -45,7 +45,7 @@ const Trip = () => {
   return (
     <div>
       <Travel cityName={name} cityDate={cityDate} todos={todos} onAddTodo={handleOpenModal} />
-      {showModal && <ModaleTodo onClose={handleCloseModal} />}
+      {showModal && <ModaleTodo cityId={id} onClose={handleCloseModal} />}
     </div>
   );
 };

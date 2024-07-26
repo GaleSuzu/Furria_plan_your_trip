@@ -23,6 +23,10 @@ export default function CityCardList({ list = [], searchQuery }) {
     router.push("/city-plan");
   };
 
+  const handleCardClick = (id, cityName) => {
+    router.push(`/trip/${id}?name=${encodeURIComponent(cityName)}`);
+  };
+
   return (
     <div className={styles.cityCardList}>
       <div className={styles.header}>
@@ -31,7 +35,12 @@ export default function CityCardList({ list = [], searchQuery }) {
       </div>
       <ul className={styles.cardsContainer}>
         {filteredCities.map((city, index) => (
-          <CityCard key={index} city={city.city} id={city._id} />
+          <CityCard
+            key={index}
+            city={city.city}
+            id={city._id}
+            onClick={() => handleCardClick(city._id, city.city)}
+          />
         ))}
       </ul>
       <div className={styles.addButtonContainer}>

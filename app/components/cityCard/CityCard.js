@@ -1,7 +1,7 @@
 import styles from "./citycard.module.scss";
 import { useRef, useState, useEffect } from "react";
 
-const CityCard = ({ city, id }) => {
+const CityCard = ({ city, id, onClick }) => {
   const cityInput = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [cityName, setCityName] = useState(city);
@@ -54,7 +54,7 @@ const CityCard = ({ city, id }) => {
   }, [city]);
   return (
     <>
-      <li className={styles.cityCard}>
+      <li className={styles.cityCard} onClick={() => onClick(id)}>
         <div className={styles.cityInfo}>
           <input
             disabled={!isActive}

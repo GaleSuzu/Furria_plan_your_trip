@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import LoadingStartApp from './components/loading-startapp/LoadingStartApp';
-import Context from './(context)/Provider';
-import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
-import './globals.css';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import LoadingStartApp from "./components/loading-startapp/LoadingStartApp";
+import Context from "./(context)/Provider";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+import "./globals.css";
 
 function MainLayout({ children }) {
   const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    if (!sessionStorage.getItem('loadingShown')) {
+    if (!sessionStorage.getItem("loadingShown")) {
       const timer = setTimeout(() => {
         setInitialLoading(false);
-        sessionStorage.setItem('loadingShown', 'true');
+        sessionStorage.setItem("loadingShown", "true");
       }, 3000);
 
       return () => clearTimeout(timer);
@@ -26,7 +26,7 @@ function MainLayout({ children }) {
   }, []);
 
   const path = router.pathname;
-  const showNavbarAndFooter = path !== '/city-plan';
+  const showNavbarAndFooter = path !== "/city-plan";
 
   return (
     <>

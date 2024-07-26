@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { FaSuitcase, FaStickyNote, FaMoneyBill } from 'react-icons/fa';
-import Countdown from 'react-countdown';
-import CheckList from '../checklist/CheckList';
-import styles from './travel.module.scss';
+import React from "react";
+import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
+import Countdown from "react-countdown";
+import CheckList from "../checklist/CheckList";
+import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const renderer = ({ days, hours, minutes, seconds }) => {
@@ -30,7 +30,11 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
     <div className={styles.travel}>
       <header className={styles.header}>
         <div className={styles.cityInfo}>
-          <img src="/path/to/milano.jpg" alt={cityName} className={styles.cityImage} />
+          <img
+            src="/path/to/milano.jpg"
+            alt={cityName}
+            className={styles.cityImage}
+          />
           <div className={styles.cityDetails}>
             <h1>{cityName}</h1>
             <p>{cityDate.toLocaleDateString()}</p>
@@ -53,9 +57,11 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <span>Budget</span>
           </button>
         </nav>
-        <CheckList todos={todos} />
+        <CheckList list={todos} />
         <div className={styles.addButtonContainer}>
-          <button className={styles.addButton} onClick={onAddTodo}>Add Todo</button>
+          <button className={styles.addButton} onClick={onAddTodo}>
+            Add Todo
+          </button>
         </div>
       </div>
     </div>

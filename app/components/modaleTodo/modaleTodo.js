@@ -94,7 +94,11 @@ const ModaleTodo = ({ cityId, onClose }) => {
             <button type="submit" className={styles.submitButton}>
               Add Todo
             </button>
-            <button type="button" className={styles.cancelButton} onClick={onClose}>
+            <button
+              type="button"
+              className={styles.cancelButton}
+              onClick={onClose}
+            >
               Cancel
             </button>
           </div>

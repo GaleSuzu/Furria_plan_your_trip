@@ -10,6 +10,25 @@ import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const [isCheckListVisible, setIsCheckListVisible] = useState(true);
+  const [isWalletVisible, setIsWalletVisible] = useState(false);
+  const [isNoteVisible, setIsNoteVisible] = useState(false);
+
+  const handleChecklist = () => {
+    setIsCheckListVisible(true);
+    setIsWalletVisible(false);
+    setIsNoteVisible(false);
+  };
+  const handleWallet = () => {
+    setIsCheckListVisible(false);
+    setIsNoteVisible(false);
+    setIsWalletVisible(true);
+  };
+
+  const handleNotes = () => {
+    setIsCheckListVisible(false);
+    setIsWalletVisible(false);
+    setIsNoteVisible(true);
+  };
 
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
@@ -48,15 +67,15 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       </header>
       <div className={styles.body}>
         <nav className={styles.navbar}>
-          <button className={styles.navButton}>
+          <button className={styles.navButton} onClick={handleChecklist}>
             <FaSuitcase />
             <span>My Journey</span>
           </button>
-          <button className={styles.navButton}>
+          <button className={styles.navButton} onClick={handleNotes}>
             <FaStickyNote />
             <span>My Notes</span>
           </button>
-          <button className={styles.navButton}>
+          <button className={styles.navButton} onClick={handleWallet}>
             <FaMoneyBill />
             <span>Budget</span>
           </button>
@@ -69,6 +88,16 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
                 Add Todo
               </button>
             </div>
+          </>
+        )}
+        {isWalletVisible && (
+          <>
+            <Budget />
+          </>
+        )}
+        {isNoteVisible && (
+          <>
+            <Notes />
           </>
         )}
       </div>

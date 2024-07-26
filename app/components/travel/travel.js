@@ -7,10 +7,10 @@ import CheckList from "../checklist/CheckList";
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
-  const [isCheckListVisible, setIsCheckListVisible] = useState(false);
+  const [isCheckListVisible, setIsCheckListVisible] = useState(true);
 
   const toggleCheckListVisibility = () => {
-    setIsCheckListVisible(!isCheckListVisible);
+    setIsCheckListVisible(true);
   };
 
   const renderer = ({ days, hours, minutes, seconds }) => {

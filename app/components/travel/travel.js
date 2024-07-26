@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
+import Notes from "../notes/Notes"; 
+import Budget from "../budget/Budget"; 
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
-  const [isCheckListVisible, setIsCheckListVisible] = useState(true);
-
-  const toggleCheckListVisibility = () => {
-    setIsCheckListVisible(true);
-  };
+  const [activeSection, setActiveSection] = useState("journey");
 
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
@@ -52,23 +50,33 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
         <nav className={styles.navbar}>
           <button
             className={`${styles.navButton} ${
-              isCheckListVisible ? styles.activeButton : ""
+              activeSection === "journey" ? styles.activeButton : ""
             }`}
-            onClick={toggleCheckListVisibility}
+            onClick={() => setActiveSection("journey")}
           >
             <FaSuitcase />
             <span>My Journey</span>
           </button>
-          <button className={styles.navButton}>
+          <button
+            className={`${styles.navButton} ${
+              activeSection === "notes" ? styles.activeButton : ""
+            }`}
+            onClick={() => setActiveSection("notes")}
+          >
             <FaStickyNote />
             <span>My Notes</span>
           </button>
-          <button className={styles.navButton}>
+          <button
+            className={`${styles.navButton} ${
+              activeSection === "budget" ? styles.activeButton : ""
+            }`}
+            onClick={() => setActiveSection("budget")}
+          >
             <FaMoneyBill />
             <span>Budget</span>
           </button>
         </nav>
-        {isCheckListVisible && (
+        {activeSection === "journey" && (
           <>
             <CheckList list={todos} />
             <div className={styles.addButtonContainer}>
@@ -78,6 +86,8 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             </div>
           </>
         )}
+        {activeSection === "notes" && <Notes />}
+        {activeSection === "budget" && <Budget />}
       </div>
     </div>
   );

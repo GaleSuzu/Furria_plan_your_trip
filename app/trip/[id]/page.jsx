@@ -8,8 +8,9 @@ const Trip = () => {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
+  const date = searchParams.get("date");
   const [todos, setTodos] = useState([]);
-  const [cityDate, setCityDate] = useState(new Date());
+  const [cityDate, setCityDate] = useState(date ? new Date(date) : new Date());
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {

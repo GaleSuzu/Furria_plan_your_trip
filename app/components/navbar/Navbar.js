@@ -23,25 +23,27 @@ export default function Navbar() {
   };
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.profileContainer}>
-        {profileImage ? (
-          <img src={profileImage} alt="Profile" className={styles.profileImage} />
-        ) : (
-          <label className={styles.uploadLabel}>
-            <input type="file" accept="image/*" onChange={handleImageChange} className={styles.uploadInput} />
-            <span className={styles.uploadText}>Upload</span>
-          </label>
+    <div className={styles.navbarContainer}>
+      <div className={styles.navbar}>
+        <div className={styles.profileContainer}>
+          {profileImage ? (
+            <img src={profileImage} alt="Profile" className={styles.profileImage} />
+          ) : (
+            <label className={styles.uploadLabel}>
+              <input type="file" accept="image/*" onChange={handleImageChange} className={styles.uploadInput} />
+              <span className={styles.uploadText}>Upload</span>
+            </label>
+          )}
+        </div>
+        <img src="/furrialogo.svg" alt="Furria Logo" className={styles.logo} />
+        <FaBars className={styles.menuButton} onClick={toggleMenu} />
+        
+        {isMenuOpen && (
+          <div className={styles.dropdownMenu}>
+            <Link href="/about" className={styles.dropdownItem}>About Us</Link>
+          </div>
         )}
       </div>
-      <img src="/furrialogo.svg" alt="Furria Logo" className={styles.logo} />
-      <FaBars className={styles.menuButton} onClick={toggleMenu} />
-      
-      {isMenuOpen && (
-        <div className={styles.dropdownMenu}>
-          <Link href="/about" className={styles.dropdownItem}>About Us</Link>
-        </div>
-      )}
     </div>
   );
 }

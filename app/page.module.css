@@ -1,5 +1,14 @@
-.main {
-  padding: 20px;
-  text-align: center;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar,
+.footer,
+.home,
+.content {
   max-width: 640px;
+  width: 100%;
 }

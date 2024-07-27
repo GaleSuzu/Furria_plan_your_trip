@@ -6,7 +6,7 @@ import LoadingStartApp from "./components/loading-startapp/LoadingStartApp";
 import Context from "./(context)/Provider";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-import "./globals.css";
+import styles from "./page.module.css"; 
 
 function MainLayout({ children }) {
   const [initialLoading, setInitialLoading] = useState(true);
@@ -33,11 +33,13 @@ function MainLayout({ children }) {
       {initialLoading ? (
         <LoadingStartApp />
       ) : (
-        <>
+        <div className={styles.mainContainer}>
           {showNavbarAndFooter && <Navbar />}
-          {children}
+          <div className={styles.content}>
+            {children}
+          </div>
           {showNavbarAndFooter && <Footer />}
-        </>
+        </div>
       )}
     </>
   );

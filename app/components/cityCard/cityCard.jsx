@@ -67,7 +67,7 @@ const CityCard = ({ city, id, onClick, from, to }) => {
 
   return (
     <>
-      <li className={styles.cityCard} onClick={() => onClick(id)}>
+      <li className={styles.cityCard} onClick={() => onClick(id, from)}>
         <div className={styles.cityInfo}>
           {isActive ? (
             <input

@@ -23,8 +23,8 @@ export default function CityCardList({ list = [], searchQuery }) {
     router.push("/city-plan");
   };
 
-  const handleCardClick = (id, cityName) => {
-    router.push(`/trip/${id}?name=${encodeURIComponent(cityName)}`);
+  const handleCardClick = (id, cityName, from) => {
+    router.push(`/trip/${id}?name=${encodeURIComponent(cityName)}&date=${from}`);
   };
 
   return (
@@ -41,7 +41,7 @@ export default function CityCardList({ list = [], searchQuery }) {
             id={city._id}
             from={city.from}
             to={city.to}
-            onClick={() => handleCardClick(city._id, city.city)}
+            onClick={() => handleCardClick(city._id, city.city, city.from)}
           />
         ))}
       </ul>

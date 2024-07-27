@@ -1,44 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./walletcard.module.scss";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-const WalletCard = ({ cost }) => {
-  const [isActive, setIsActive] = useState(false);
-
-  /*   const handleActive = (e) => {
-    e.stopPropagation();
-    setIsActive(!isActive);
+const WalletCard = () => {
+  const handleEdit = () => {
+    alert("Facciamo finta di modificare");
   };
 
-  const editCost = async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const costEditData = {
-      text: cost.text,
-      cost: cost.cost,
-      cityId: cost.cityId,
-    };
-
-    try {
-      const response = await fetch(`/api/cost/${cost._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(costEditData),
-      });
-      if (!response.ok) {
-        throw new Error("Cost not provided!");
-      }
-      setIsActive(false);
-      window.location.reload();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }; */
+  const handleDelete = () => {
+    alert("Facciamo finta di eliminare");
+  };
 
   return (
     <div className={styles.walletCard}>
-      <h2>Wallet Card</h2>
+      <h2 className={styles.title}>Fake Spesa</h2>
+      <p className={styles.details}>Luogo: Un Bar per strada</p>
+      <p className={styles.details}>Costo: 20€</p>
+      <div className={styles.actions}>
+        <FaEdit className={styles.icon} onClick={handleEdit} />
+        <FaTrash className={styles.icon} onClick={handleDelete} />
+      </div>
     </div>
   );
 };

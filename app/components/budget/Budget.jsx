@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./budget.module.scss";
+import WalletCard from "../WalletCard/WalletCard";
 import WalletModal from "../walletModal/modal";
-import FakeWalletCard from "../fakeWalletCard/FakeWalletCard";
-import WalletCard from "../walletCard/walletCard";
 
 const Budget = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +46,6 @@ const Budget = () => {
         </div>
       </div>
       <div className={styles.budgetContent}>
-        <FakeWalletCard />
         <WalletCard />
       </div>
       {isModalOpen && <WalletModal onClose={closeModal} />}

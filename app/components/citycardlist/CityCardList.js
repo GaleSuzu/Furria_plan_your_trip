@@ -6,9 +6,10 @@ import CityCard from "../cityCard/CityCard";
 export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();
   const [filteredCities, setFilteredCities] = useState([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    let cities = [...list]; // Cloniamo la lista per evitare mutazioni dirette
+    let cities = [...list]; 
 
     if (searchQuery) {
       cities = cities.filter((city) =>
@@ -16,7 +17,7 @@ export default function CityCardList({ list = [], searchQuery }) {
       );
     }
 
-    // Ordina le città in base alla data di partenza (from) in modo crescente
+    
     cities.sort((a, b) => new Date(a.from) - new Date(b.from));
 
     setFilteredCities(cities);
@@ -30,14 +31,18 @@ export default function CityCardList({ list = [], searchQuery }) {
     router.push(`/trip/${id}?name=${encodeURIComponent(cityName)}&date=${from}`);
   };
 
+  const displayedCities = showAll ? filteredCities : filteredCities.slice(0, 3);
+
   return (
     <div className={styles.cityCardList}>
       <div className={styles.header}>
         <h2 className={styles.title}>Waiting for...</h2>
-        <button className={styles.showAllButton}>Show All</button>
+        <button className={styles.showAllButton} onClick={() => setShowAll(!showAll)}>
+          {showAll ? "Show Less" : "Show All"}
+        </button>
       </div>
       <ul className={styles.cardsContainer}>
-        {filteredCities.map((city, index) => (
+        {displayedCities.map((city, index) => (
           <CityCard
             key={index}
             city={city.city}

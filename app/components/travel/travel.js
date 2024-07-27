@@ -5,7 +5,7 @@ import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
 import Notes from "../notes/Notes";
-import Budget from "../budget/Budget";
+import Budget from "../budget/[id]/Budget";
 import styles from "./travel.module.scss";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {

@@ -5,18 +5,21 @@ import CityCard from "../cityCard/CityCard";
 
 export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();
-  const [filteredCities, setFilteredCities] = useState(list);
+  const [filteredCities, setFilteredCities] = useState([]);
 
   useEffect(() => {
+    let cities = [...list]; // Cloniamo la lista per evitare mutazioni dirette
+
     if (searchQuery) {
-      setFilteredCities(
-        list.filter((city) =>
-          city.city.toLowerCase().includes(searchQuery.toLowerCase())
-        )
+      cities = cities.filter((city) =>
+        city.city.toLowerCase().includes(searchQuery.toLowerCase())
       );
-    } else {
-      setFilteredCities(list);
     }
+
+    // Ordina le città in base alla data di partenza (from) in modo crescente
+    cities.sort((a, b) => new Date(a.from) - new Date(b.from));
+
+    setFilteredCities(cities);
   }, [searchQuery, list]);
 
   const navigateToCityPlan = () => {

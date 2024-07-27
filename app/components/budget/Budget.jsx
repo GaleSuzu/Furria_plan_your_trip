@@ -12,17 +12,15 @@ const Budget = () => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/cost");
-        const data = await response.json();
-        setBudget(data);
-      } catch (error) {
-        console.error("Error fetching budget data:", error);
-      }
-    };
-
-    fetchData();
+    fetch("/api/cost", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        setBudget(response.data);
+      });
   }, []);
 
   const openModal = () => {

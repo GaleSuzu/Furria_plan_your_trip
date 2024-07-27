@@ -50,11 +50,7 @@ const WalletModal = ({ cityId, onClose }) => {
           </div>
           <div className={styles.formGroup}>
             <label>Costo:</label>
-            <input
-              type="number"
-              value={cost}
-              onChange={(e) => setCost(e.target.value)}
-            />
+            <input type="number" onChange={(e) => setCost(e.target.value)} />
           </div>
           <div className={styles.buttonGroup}>
             <button className={styles.cancelButton} onClick={onClose}>

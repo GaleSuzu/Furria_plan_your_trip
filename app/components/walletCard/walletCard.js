@@ -4,7 +4,7 @@ import styles from "./walletcard.module.scss";
 const WalletCard = ({ cost }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const handleActive = (e) => {
+  /*   const handleActive = (e) => {
     e.stopPropagation();
     setIsActive(!isActive);
   };
@@ -34,12 +34,11 @@ const WalletCard = ({ cost }) => {
     } catch (error) {
       console.error("Error:", error);
     }
-  };
+  }; */
 
   return (
     <div className={styles.walletCard}>
       <h2>Wallet Card</h2>
-
     </div>
   );
 };

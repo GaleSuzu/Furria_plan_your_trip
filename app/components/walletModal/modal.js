@@ -3,7 +3,9 @@ import styles from "./modal.module.scss";
 
 const WalletModal = ({ cityId, onClose }) => {
   const [place, setPlace] = useState("");
-  const [cost, setCost] = useState("");
+  const [cost, setCost] = useState(null);
+  const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +14,8 @@ const WalletModal = ({ cityId, onClose }) => {
       place,
       cost,
       cityId,
+      text,
+      category,
     };
 
     try {
@@ -52,6 +56,10 @@ const WalletModal = ({ cityId, onClose }) => {
             <label>Costo:</label>
             <input type="number" onChange={(e) => setCost(e.target.value)} />
           </div>
+          <label>testo:</label>
+          <input type="text" onChange={(e) => setText(e.target.value)} />
+          <label>category:</label>
+          <input type="text" onChange={(e) => setCategory(e.target.value)} />
           <div className={styles.buttonGroup}>
             <button className={styles.cancelButton} onClick={onClose}>
               Annulla

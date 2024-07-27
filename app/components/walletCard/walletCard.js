@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./walletcard.module.sass";
+import styles from "./walletcard.module.scss";
 
-const WalletCard = ({ todo }) => {
+const WalletCard = ({ cost }) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleActive = (e) => {
@@ -37,8 +37,9 @@ const WalletCard = ({ todo }) => {
   };
 
   return (
-    <div>
+    <div className={styles.walletCard}>
       <h2>Wallet Card</h2>
+
     </div>
   );
 };

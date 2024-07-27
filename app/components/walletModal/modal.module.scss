@@ -1,4 +1,4 @@
-.modalCost {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,15 +11,6 @@
   z-index: 1000;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
 .modalContent {
   background: white;
   padding: 30px;
@@ -27,49 +18,28 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   width: 100%;
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.title {
+.modalTitle {
   margin-bottom: 20px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: #333;
 }
 
-.inputGroup {
-  width: 100%;
+.formGroup {
   margin-bottom: 20px;
 }
 
-.label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 1rem;
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
   color: #333;
 }
 
-.icon {
-  margin-right: 8px;
-}
-
-.datePicker {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
-}
-
-.input,
-.textarea {
+.formGroup input {
   width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #ccc;
@@ -79,22 +49,13 @@
   transition: border-color 0.3s;
 }
 
-.input:focus,
-.textarea:focus,
-.datePicker:focus {
+.formGroup input:focus {
   border-color: #8673f5;
   outline: none;
 }
 
-.textarea {
-  height: 100px;
-  resize: none;
-}
-
 .buttonGroup {
   display: flex;
-  gap: 10px;
-  width: 100%;
   justify-content: space-between;
 }
 
@@ -108,20 +69,14 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  flex: 1;
-  text-align: center;
 }
 
 .cancelButton {
   background-color: #ccc;
 }
 
-.submitButton:hover {
-  background-color: #6a5fc7;
-  transform: scale(1.05);
-}
-
+.submitButton:hover,
 .cancelButton:hover {
-  background-color: #999;
+  background-color: #6a5fc7;
   transform: scale(1.05);
 }

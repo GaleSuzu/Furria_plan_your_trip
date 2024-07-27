@@ -36,32 +36,36 @@ const WalletModal = ({ cityId, onClose }) => {
   };
 
   return (
-    <div className={styles.modalCost}>
-      <h2>Aggiungi un costo</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Luogo:
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <h2 className={styles.modalTitle}>Aggiungi un costo</h2>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label>Luogo:</label>
             <input
               type="text"
               value={place}
               onChange={(e) => setPlace(e.target.value)}
             />
-          </label>
-          <label>
-            Costo:
+          </div>
+          <div className={styles.formGroup}>
+            <label>Costo:</label>
             <input
               type="number"
               value={cost}
               onChange={(e) => setCost(e.target.value)}
             />
-          </label>
-          <div>
-            <button onClick={onClose}>Annulla</button>
-            <button type="submit">Aggiungi</button>
           </div>
-        </div>
-      </form>
+          <div className={styles.buttonGroup}>
+            <button className={styles.cancelButton} onClick={onClose}>
+              Annulla
+            </button>
+            <button className={styles.submitButton} type="submit">
+              Aggiungi
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

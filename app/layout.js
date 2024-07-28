@@ -7,6 +7,7 @@ import Context from "./(context)/Provider";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import styles from "./page.module.css"; 
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
 
 function MainLayout({ children }) {
   const [initialLoading, setInitialLoading] = useState(true);

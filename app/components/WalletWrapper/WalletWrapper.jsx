@@ -1,4 +1,4 @@
-import WalletCard from "../WalletCard/walletCard";
+import WalletCard from "../walletCard/walletCard";
 
 const WalletWrapper = ({ list = [] }) => {
   return (

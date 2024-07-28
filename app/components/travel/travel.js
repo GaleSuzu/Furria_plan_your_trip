@@ -83,11 +83,8 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       <header className={styles.header}>
         <div className={styles.cityInfo}>
           <img
-<<<<<<< HEAD
-            // src="/path/to/milano.jpg"
-=======
+
             src={cityImage}
->>>>>>> 0a405a632d657eaffdf5f95d30362af0a5811db5
             alt={cityName}
             className={styles.cityImage}
             onError={(e) => {

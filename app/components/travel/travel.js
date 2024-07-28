@@ -83,10 +83,6 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       <header className={styles.header}>
         <div className={styles.cityInfo}>
           <img
-<<<<<<< HEAD
-=======
-
->>>>>>> ccfac83b4222cfb49502d91f21fd2b960b47cd1b
             src={cityImage}
             alt={cityName}
             className={styles.cityImage}

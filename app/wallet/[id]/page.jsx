@@ -1,5 +1,5 @@
 "use client";
-import WalletModal from "@/app/components/WalletModal/WalletModal";
+import WalletModal from "@/app/components/walletModal/WalletModal";
 import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,7 +21,6 @@ const Wallet = ({ onAddCost }) => {
       .then((res) => res.json())
       .then((data) => setCosts(data.data));
   }, []);
-  console.log(costs);
 
   return (
     <div>

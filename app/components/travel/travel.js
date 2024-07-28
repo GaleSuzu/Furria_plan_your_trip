@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
@@ -24,9 +24,9 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
           params: {
             key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
             q: cityName,
-            image_type: 'photo',
-            per_page: 3
-          }
+            image_type: "photo",
+            per_page: 3,
+          },
         });
         if (response.data.hits.length > 0) {
           setCityImage(response.data.hits[0].webformatURL);
@@ -83,11 +83,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       <header className={styles.header}>
         <div className={styles.cityInfo}>
           <img
-<<<<<<< HEAD
-            // src="/path/to/milano.jpg"
-=======
             src={cityImage}
->>>>>>> 0a405a632d657eaffdf5f95d30362af0a5811db5
             alt={cityName}
             className={styles.cityImage}
             onError={(e) => {
@@ -96,9 +92,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             }}
           />
           <div className={styles.cityDetails}>
-            <h1>
-              {cityName}
-            </h1>
+            <h1>{cityName}</h1>
             <p>{cityDate.toLocaleDateString()}</p>
             <Countdown date={cityDate} renderer={renderer} />
           </div>

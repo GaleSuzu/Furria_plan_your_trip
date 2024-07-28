@@ -5,10 +5,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0;
   padding-bottom: 80px;
+  height: 100vh;
 }
 
 .header {
-  background-color: #878FE0;
+  background-color: #878fe0;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -66,7 +67,7 @@
 }
 
 .navbar {
-  background-color: #878FE0;
+  background-color: #878fe0;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
@@ -76,7 +77,7 @@
 
 .navButton {
   background-color: white;
-  border: 1px solid #878FE0;
+  border: 1px solid #878fe0;
   border-radius: 10px;
   padding: 8px 10px;
   display: flex;
@@ -132,7 +133,7 @@
 
 .icon {
   cursor: pointer;
-  color: #878FE0;
+  color: #878fe0;
   transition: color 0.3s;
 }
 
@@ -168,7 +169,7 @@
 }
 
 .navButton.activeButton {
-  background-color:#8673f5;
+  background-color: #8673f5;
   color: white;
 }
 

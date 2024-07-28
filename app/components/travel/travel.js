@@ -5,10 +5,12 @@ import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
 import Notes from "../notes/Notes";
-import Budget from "../budget/[id]/Budget";
 import styles from "./travel.module.scss";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
+  const { id } = useParams();
   const [isCheckListVisible, setIsCheckListVisible] = useState(true);
   const [isWalletVisible, setIsWalletVisible] = useState(false);
   const [isNoteVisible, setIsNoteVisible] = useState(false);
@@ -55,7 +57,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       <header className={styles.header}>
         <div className={styles.cityInfo}>
           <img
-            src="/path/to/milano.jpg"
+            // src="/path/to/milano.jpg"
             alt={cityName}
             className={styles.cityImage}
           />
@@ -86,7 +88,8 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <FaStickyNote />
             <span>My Notes</span>
           </button>
-          <button
+          <Link
+            href={`/wallet/${id}`}
             className={`${styles.navButton} ${
               isWalletVisible ? styles.activeButton : ""
             }`}
@@ -94,7 +97,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
           >
             <FaMoneyBill />
             <span>Budget</span>
-          </button>
+          </Link>
         </nav>
         {isCheckListVisible && (
           <>
@@ -106,7 +109,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             </div>
           </>
         )}
-        {isWalletVisible && <Budget />}
+        {/* {isWalletVisible && <Budget />} */}
         {isNoteVisible && <Notes />}
       </div>
     </div>

@@ -1,48 +1,47 @@
 .walletCard {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .walletCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  .title {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .details {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .actions {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .icon {
-    cursor: pointer;
-    color: #878FE0;
-    transition: color 0.3s;
-  }
-  
-  .icon:hover {
-    color: #8673f5;
-  }
-  
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.walletCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.details {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  color: #878fe0;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: #8673f5;
+}

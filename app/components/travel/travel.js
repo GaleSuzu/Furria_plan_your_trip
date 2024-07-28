@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
@@ -14,6 +15,31 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
   const [isCheckListVisible, setIsCheckListVisible] = useState(true);
   const [isWalletVisible, setIsWalletVisible] = useState(false);
   const [isNoteVisible, setIsNoteVisible] = useState(false);
+  const [cityImage, setCityImage] = useState("/images/default-city.jpg");
+
+  useEffect(() => {
+    const fetchCityImage = async () => {
+      try {
+        const response = await axios.get(`https://pixabay.com/api/`, {
+          params: {
+            key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
+            q: cityName,
+            image_type: 'photo',
+            per_page: 3
+          }
+        });
+        if (response.data.hits.length > 0) {
+          setCityImage(response.data.hits[0].webformatURL);
+        }
+      } catch (error) {
+        console.error("Errore nel recupero dell'immagine della città:", error);
+      }
+    };
+
+    if (cityName) {
+      fetchCityImage();
+    }
+  }, [cityName]);
 
   const handleChecklist = () => {
     setIsCheckListVisible(true);
@@ -57,12 +83,22 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
       <header className={styles.header}>
         <div className={styles.cityInfo}>
           <img
+<<<<<<< HEAD
             // src="/path/to/milano.jpg"
+=======
+            src={cityImage}
+>>>>>>> 0a405a632d657eaffdf5f95d30362af0a5811db5
             alt={cityName}
             className={styles.cityImage}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/images/default-city.jpg";
+            }}
           />
           <div className={styles.cityDetails}>
-            <h1>{cityName}</h1>
+            <h1>
+              {cityName}
+            </h1>
             <p>{cityDate.toLocaleDateString()}</p>
             <Countdown date={cityDate} renderer={renderer} />
           </div>

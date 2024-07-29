@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { FaBars } from 'react-icons/fa'; 
 import styles from './navbar.module.scss';
 import Link from 'next/link';
-import Avatar from 'boring-avatars'; // Importa Boring Avatars
-import AvatarModal from '../avatarmodal/AvatarModal'; // Importa AvatarModal
+import Avatar from 'boring-avatars'; 
+import AvatarModal from '../avatarmodal/AvatarModal'; 
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
-  const [selectedAvatar, setSelectedAvatar] = useState('marble'); // Stato per l'avatar selezionato
-  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false); // Stato per la modale
+  const [selectedAvatar, setSelectedAvatar] = useState('marble');
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); 

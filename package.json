@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
     "axios": "^1.7.2",
+    "axos": "^0.0.1",
     "boring-avatars": "^1.10.2",
     "countdown": "^2.6.0",
     "express": "^4.19.2",

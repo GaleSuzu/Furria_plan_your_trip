@@ -17,7 +17,6 @@ export default function CityCardList({ list = [], searchQuery }) {
       );
     }
 
-    
     cities.sort((a, b) => new Date(a.from) - new Date(b.from));
 
     setFilteredCities(cities);
@@ -52,6 +51,15 @@ export default function CityCardList({ list = [], searchQuery }) {
             onClick={() => handleCardClick(city._id, city.city, city.from)}
           />
         ))}
+        {!showAll && filteredCities.length > 3 && (
+          <li className={styles.dotsContainer}>
+            <span className={styles.dots}>
+              <span className={styles.dot}>.</span>
+              <span className={styles.dot}>.</span>
+              <span className={styles.dot}>.</span>
+            </span>
+          </li>
+        )}
       </ul>
       <div className={styles.addButtonContainer}>
         <button className={styles.addButton} onClick={navigateToCityPlan}>

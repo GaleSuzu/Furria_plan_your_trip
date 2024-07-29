@@ -4,11 +4,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios';
 
 const CityCard = ({ city, id, onClick, from, to }) => {
   const cityInput = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [cityName, setCityName] = useState(city);
+  const [imageUrl, setImageUrl] = useState("/images/default-city.jpg");
 
   const handleActive = (e) => {
     e.stopPropagation();
@@ -65,9 +67,44 @@ const CityCard = ({ city, id, onClick, from, to }) => {
     setCityName(city);
   }, [city]);
 
+  useEffect(() => {
+    const fetchCityImage = async () => {
+      try {
+        const response = await axios.get(`https://pixabay.com/api/`, {
+          params: {
+            key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
+            q: city,
+            image_type: "photo",
+            per_page: 3,
+          },
+        });
+        if (response.data.hits.length > 0) {
+          setImageUrl(response.data.hits[0].webformatURL);
+        }
+      } catch (error) {
+        console.error("Errore nel recupero dell'immagine della città:", error);
+      }
+    };
+
+    if (city) {
+      fetchCityImage();
+    }
+  }, [city]);
+
   return (
     <>
       <li className={styles.cityCard} onClick={() => onClick(id, from)}>
+        <div className={styles.cityImageContainer}>
+          <img
+            src={imageUrl}
+            alt={cityName}
+            className={styles.cityImage}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/images/default-city.jpg";
+            }}
+          />
+        </div>
         <div className={styles.cityInfo}>
           {isActive ? (
             <input
@@ -80,8 +117,10 @@ const CityCard = ({ city, id, onClick, from, to }) => {
           ) : (
             <h3>{cityName}</h3>
           )}
-          <p>Dal: {new Date(from).toLocaleDateString()}</p>
-          <p>Al: {new Date(to).toLocaleDateString()}</p>
+          <div className={styles.cityDates}>
+            <p>Dal: {new Date(from).toLocaleDateString()}</p>
+            <p>Al: {new Date(to).toLocaleDateString()}</p>
+          </div>
         </div>
         <div className={styles.actionButtons}>
           <button onClick={handleActive}>

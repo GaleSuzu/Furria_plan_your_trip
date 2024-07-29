@@ -1,35 +1,54 @@
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa'; 
 import styles from './navbar.module.scss';
+import Link from 'next/link';
+import Avatar from 'boring-avatars'; // Importa Boring Avatars
+import AvatarModal from '../avatarmodal/AvatarModal'; // Importa AvatarModal
 
 export default function Navbar() {
-  const [profileImage, setProfileImage] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [selectedAvatar, setSelectedAvatar] = useState('marble'); // Stato per l'avatar selezionato
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false); // Stato per la modale
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setProfileImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); 
+  };
+
+  const openAvatarModal = () => {
+    setIsAvatarModalOpen(true);
+  };
+
+  const closeAvatarModal = () => {
+    setIsAvatarModalOpen(false);
   };
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.profileContainer}>
-        {profileImage ? (
-          <img src={profileImage} alt="Profile" className={styles.profileImage} />
-        ) : (
-          <label className={styles.uploadLabel}>
-            <input type="file" accept="image/*" onChange={handleImageChange} className={styles.uploadInput} />
-            <span className={styles.uploadText}>Upload</span>
-          </label>
+    <div className={styles.navbarContainer}>
+      <div className={styles.navbar}>
+        <div className={styles.profileContainer} onClick={openAvatarModal}>
+          <Avatar
+            size={40}
+            name="User"
+            variant={selectedAvatar}
+            colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+          />
+        </div>
+        <img src="/furrialogo.svg" alt="Furria Logo" className={styles.logo} />
+        <FaBars className={styles.menuButton} onClick={toggleMenu} />
+        
+        {isMenuOpen && (
+          <div className={styles.dropdownMenu}>
+            <Link href="/about" className={styles.dropdownItem}>About Us</Link>
+          </div>
         )}
       </div>
-      <img src="/furrialogo.svg" alt="Furria Logo" className={styles.logo} />
-      <FaBars className={styles.menuButton} />
+      {isAvatarModalOpen && (
+        <AvatarModal
+          selectedAvatar={selectedAvatar}
+          setSelectedAvatar={setSelectedAvatar}
+          onClose={closeAvatarModal}
+        />
+      )}
     </div>
   );
 }

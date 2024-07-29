@@ -1,4 +1,3 @@
-import { FaSearch } from "react-icons/fa";
 import styles from "./searchbar.module.scss";
 
 export default function Searchbar({ onSearch }) {
@@ -10,11 +9,11 @@ export default function Searchbar({ onSearch }) {
     <div className={styles.searchbar}>
       <input
         type="text"
-        placeholder="Where we go?"
+        placeholder="Where do we go?"
         className={styles.input}
         onChange={handInputChange}
       />
-      <FaSearch className={styles.searchIcon} />
+
     </div>
   );
 }

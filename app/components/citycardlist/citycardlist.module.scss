@@ -2,11 +2,10 @@
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
-  margin: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
 
 .header {
@@ -64,11 +63,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed; 
-  bottom: 60px; 
+  position: fixed;
+  bottom: 60px;
   left: 50%;
-  transform: translateX(-50%); 
-  z-index: 1000; 
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
 .addButton {
@@ -84,4 +83,16 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.showAllButton {
+  background: none;
+  border: none;
+  color: #8673f5;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.showAllButton:hover {
+  text-decoration: underline;
 }

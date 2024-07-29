@@ -15,9 +15,11 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.home}>
-      <Searchbar onSearch={handleSearch} />
-      <CityCardList list={city} searchQuery={searchQuery} />
+    <div className={styles.homeContainer}>
+      <div className={styles.home}>
+        <Searchbar onSearch={handleSearch} />
+        <CityCardList list={city} searchQuery={searchQuery} />
+      </div>
     </div>
   );
 }

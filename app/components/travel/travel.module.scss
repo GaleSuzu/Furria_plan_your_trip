@@ -5,10 +5,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0;
   padding-bottom: 80px;
+  height: 100vh;
 }
 
 .header {
-  background-color: #878FE0;
+  background-color: #878fe0;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -62,21 +63,21 @@
   margin: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
-  background-color: #878FE0;
+  background-color: #878fe0;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  margin: 0 -20px; 
+  margin: 0 -20px;
   margin-bottom: 20px;
 }
 
 .navButton {
   background-color: white;
-  border: 1px solid #878FE0;
+  border: 1px solid #878fe0;
   border-radius: 10px;
   padding: 8px 10px;
   display: flex;
@@ -86,8 +87,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s;
   font-size: 0.8rem;
-  flex-grow: 1; 
-  margin: 0 5px; 
+  flex-grow: 1;
+  margin: 0 5px;
 }
 
 .navButton:hover {
@@ -118,7 +119,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
 }
 
 .todoContent p {
@@ -127,24 +128,24 @@
 
 .todoActions {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .icon {
   cursor: pointer;
-  color: #878FE0; 
+  color: #878fe0;
   transition: color 0.3s;
 }
 
 .icon:hover {
-  color: #8673f5; 
+  color: #8673f5;
 }
 
 .addButtonContainer {
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 60px; 
+  bottom: 60px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -168,6 +169,13 @@
 }
 
 .navButton.activeButton {
-  background-color:#8673f5;
+  background-color: #8673f5;
   color: white;
+}
+
+.cityInfo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }

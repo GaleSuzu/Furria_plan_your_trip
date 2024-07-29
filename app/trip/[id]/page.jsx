@@ -8,8 +8,9 @@ const Trip = () => {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
+  const date = searchParams.get("date");
   const [todos, setTodos] = useState([]);
-  const [cityDate, setCityDate] = useState(new Date());
+  const [cityDate, setCityDate] = useState(date ? new Date(date) : new Date());
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -20,9 +21,19 @@ const Trip = () => {
           throw new Error("Failed to fetch todos");
         }
         const data = await response.json();
-        setTodos(data.data);
-        if (data.data.length > 0) {
-          setCityDate(new Date(data.data[0].date));
+
+
+        const sortedTodos = data.data.sort((a, b) => {
+          const dateTimeA = new Date(`${a.date}T${a.time}`);
+          const dateTimeB = new Date(`${b.date}T${b.time}`);
+          return dateTimeA - dateTimeB;
+        });
+
+        setTodos(sortedTodos);
+
+
+        if (sortedTodos.length > 0) {
+          setCityDate(new Date(sortedTodos[0].date));
         }
       } catch (error) {
         console.error(error);

@@ -26,7 +26,6 @@ const Wallet = ({ onAddCost }) => {
     <div>
       <WalletWrapper list={costs} />
       <div>
-        <button onClick={handleOpenModal}>Add Cost</button>
         {showModal && (
           <WalletModal
             cityDate={cityDate}

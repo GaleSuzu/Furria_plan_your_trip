@@ -51,6 +51,8 @@ const Trip = () => {
     setShowModal(false);
   };
 
+  console.log(name);
+
   return (
     <div>
       <Travel

@@ -119,7 +119,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <span>My Notes</span>
           </button>
           <Link
-            href={`/wallet/${id}`}
+            href={`/wallet/${id}?name=${cityName}`}
             className={`${styles.navButton} ${
               isWalletVisible ? styles.activeButton : ""
             }`}

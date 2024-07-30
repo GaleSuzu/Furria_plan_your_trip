@@ -28,7 +28,7 @@ const About = () => {
           ogni viaggio sia un'opportunità per crescere e imparare. Perché
           vogliamo che tu possa vivere esperienze autentiche e indimenticabili.
           Perché siamo appassionati di tecnologia e vogliamo utilizzare le
-          nostre competenze per migliorare la tua vita."`}
+          nostre competenze per migliorare la tua vita.`}
         </p>
       </section>
       <h2>The Developers</h2>

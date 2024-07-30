@@ -38,6 +38,7 @@ const WalletModal = ({ cityId, onClose }) => {
       console.error("Error:", error);
     }
   };
+  console.log(cityId);
 
   return (
     <div className={styles.modalOverlay}>

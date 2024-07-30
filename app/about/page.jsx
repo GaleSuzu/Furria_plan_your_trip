@@ -3,11 +3,12 @@ import React from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import styles from "./page.module.scss";
 
 const About = () => {
   return (
-    <div>
-      <section>
+    <div className={styles.main}>
+      <section className={styles.mainWrapper}>
         <h2>
           <strong>Furrìa</strong>
         </h2>
@@ -16,7 +17,7 @@ const About = () => {
         </h3>
         <p>
           {`Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro
-          passioni per creare <strong>Furrìa</strong>, l'app che semplifica la
+          passioni per creare: Furrìa, l'app che semplifica la
           pianificazione dei viaggi. Grazie alla nostra esperienza nel settore
           del turismo e alle nostre competenze tecniche, abbiamo sviluppato una
           piattaforma completa e personalizzabile che ti accompagnerà in ogni
@@ -32,18 +33,19 @@ const About = () => {
         </p>
       </section>
       <h2>The Developers</h2>
-      <section>
-        <div>
-          <div>
+      <section className={styles.teamDescription}>
+        <div className={styles.teamCard}>
+          <div className={styles.card}>
             <Image
               src="/images/noi/Susanna.jpg"
               alt=""
               width={150}
               height={170}
+              className={styles.image}
             />
             <h3>Susanna Palmeri</h3>
             <p>Full stack Developer</p>
-            <div>
+            <div className={styles.btnWapper}>
               <Link href="https://github.com/GaleSuzu">
                 <FaGithub /> Github
               </Link>
@@ -52,16 +54,17 @@ const About = () => {
               </Link>
             </div>
           </div>
-          <div>
+          <div className={styles.card}>
             <Image
               src="/Images/noi/Roberta.jpg"
               alt="Roberta Favuzza"
               width={150}
               height={150}
+              className={styles.image}
             />
             <h3>Roberta Favuzza</h3>
             <p>Full stack Developer</p>
-            <div>
+            <div className={styles.btnWapper}>
               <Link href="https://github.com/robertafavuzza">
                 <FaGithub /> Github
               </Link>
@@ -71,16 +74,17 @@ const About = () => {
             </div>
           </div>
 
-          <div>
+          <div className={styles.card}>
             <Image
               src="/images/noi/Peppe.jpg"
               alt=""
               width={200}
               height={170}
+              className={styles.image}
             />
             <h3>Giuseppe Neri</h3>
             <p>Full stack Developer</p>
-            <div>
+            <div className={styles.btnWapper}>
               <Link href="https://github.com/GiuseppeSonny">
                 <FaGithub /> Github
               </Link>
@@ -90,16 +94,17 @@ const About = () => {
             </div>
           </div>
 
-          <div>
+          <div className={styles.card}>
             <Image
               src="/images/noi/Paolo.jpg"
               alt=""
               width={200}
               height={170}
+              className={styles.image}
             />
             <h3>Paolo Caramia</h3>
             <p>Full stack Developer</p>
-            <div>
+            <div className={styles.btnWapper}>
               <Link href="https://github.com/Paolo131084">
                 <FaGithub /> Github
               </Link>
@@ -109,16 +114,17 @@ const About = () => {
             </div>
           </div>
 
-          <div>
+          <div className={styles.card}>
             <Image
               src="/images/noi/Alberto.jpg"
               alt=""
               width={200}
               height={170}
+              className={styles.image}
             />
             <h3>Alberto Palmeri</h3>
             <p>Full stack Developer</p>
-            <div>
+            <div className={styles.btnWapper}>
               <Link href="https://github.com/Alb4rto">
                 <FaGithub /> Github
               </Link>
@@ -127,10 +133,6 @@ const About = () => {
               </Link>
             </div>
           </div>
-
-          <Link href="/">
-            <button text="Home" />
-          </Link>
         </div>
       </section>
     </div>

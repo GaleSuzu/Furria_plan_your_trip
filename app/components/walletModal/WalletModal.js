@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./walletmodal.module.scss";
+import styles from "./WalletModal.module.scss";
 
 const WalletModal = ({ cityId, onClose }) => {
   const [place, setPlace] = useState("");

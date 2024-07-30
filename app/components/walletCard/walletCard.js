@@ -1,4 +1,4 @@
-import styles from "@/app/components/WalletCard/Walletcard.module.scss";
+import styles from "app\components\walletCard\walletcard.module.scss";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import SaveIcon from "@mui/icons-material/Save";

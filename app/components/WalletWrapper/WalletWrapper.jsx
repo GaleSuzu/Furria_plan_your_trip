@@ -70,7 +70,7 @@ const WalletWrapper = ({ list, cityName }) => {
         </div>
       </header>
       <div className={styles.body}>
-        <div className={styles.body}>
+        <div>
           <nav className={styles.navbar}>
             <button className={styles.navButton}>
               <Link

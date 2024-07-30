@@ -3,6 +3,7 @@ import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import WalletModal from "@/app/components/walletModal/WalletModal";
+import ButtonAdd from "@/app/components/buttonAdd/buttonAdd";
 
 const Wallet = ({ onAddCost }) => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const Wallet = ({ onAddCost }) => {
   return (
     <div>
       <WalletWrapper cityName={name} list={costs} />
-      <button onClick={handleOpenModal}>Add Expense</button>
+      <ButtonAdd onClick={handleOpenModal} />
       {showModal && <WalletModal cityId={id} onClose={handleCloseModal} />}
     </div>
   );

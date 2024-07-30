@@ -95,12 +95,12 @@ const CheckListCard = ({ todo }) => {
           </form>
         ) : (
           <>
-            <p className={styles.date}>
+            <h2 className={styles.date}>
               Date: {new Date(todo.date).toLocaleDateString()}
-            </p>
-            <p className={styles.time}>Time: {todo.time}</p>
-            <p className={styles.place}>Place: {todo.place}</p>
-            <p className={styles.text}>Text: {todo.text}</p>
+            </h2>
+            <h3 className={styles.time}>Time: {todo.time}</h3>
+            <h3 className={styles.place}>Place: {todo.place}</h3>
+            <h3 className={styles.text}>Text: {todo.text}</h3>
           </>
         )}
       </div>

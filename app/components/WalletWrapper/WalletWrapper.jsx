@@ -1,18 +1,18 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
-import Countdown from "react-countdown";
+
+import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import WalletCard from "../WalletCard/walletCard";
 import WalletModal from "../walletModal/WalletModal";
 import styles from "./walletwrapper.module.scss";
 import { useParams } from "next/navigation";
 import { globalContext } from "../../(context)/Provider";
+import Link from "next/link";
 
-const WalletWrapper = ({ list, cityName, cityDate, todos }) => {
+const WalletWrapper = ({ list, cityName }) => {
+  const { id } = useParams();
   const { travelData } = useContext(globalContext);
   const [showModal, setShowModal] = useState(false);
-  const [isCheckListVisible, setIsCheckListVisible] = useState(true);
-  const [isWalletVisible, setIsWalletVisible] = useState(false);
-  const [isNoteVisible, setIsNoteVisible] = useState(false);
   const [cityImage, setCityImage] = useState("/images/default-city.jpg");
 
   useEffect(() => {
@@ -39,43 +39,6 @@ const WalletWrapper = ({ list, cityName, cityDate, todos }) => {
     }
   }, [cityName]);
 
-  const handleChecklist = () => {
-    setIsCheckListVisible(true);
-    setIsWalletVisible(false);
-    setIsNoteVisible(false);
-  };
-
-  const handleWallet = () => {
-    setIsCheckListVisible(false);
-    setIsNoteVisible(false);
-    setIsWalletVisible(true);
-  };
-
-  const handleNotes = () => {
-    setIsCheckListVisible(false);
-    setIsWalletVisible(false);
-    setIsNoteVisible(true);
-  };
-
-  const renderer = ({ days, hours, minutes, seconds }) => {
-    return (
-      <div className={styles.countdown}>
-        <div>
-          <span>{days}</span> DAYS
-        </div>
-        <div>
-          <span>{hours}</span> HRS
-        </div>
-        <div>
-          <span>{minutes}</span> MINS
-        </div>
-        <div>
-          <span>{seconds}</span> SECS
-        </div>
-      </div>
-    );
-  };
-
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -88,6 +51,8 @@ const WalletWrapper = ({ list, cityName, cityDate, todos }) => {
     <div className={styles.wallet}>
       <header className={styles.header}>
         <div className={styles.cityInfo}>
+          {" "}
+          {/* non funziona */}
           <img
             src={cityImage}
             alt={cityName}
@@ -99,55 +64,27 @@ const WalletWrapper = ({ list, cityName, cityDate, todos }) => {
           />
           <div className={styles.cityDetails}>
             <h1>{cityName}</h1>
-            <p>{cityDate.toLocaleDateString()}</p>
-            <Countdown date={cityDate} renderer={renderer} />
           </div>
         </div>
       </header>
       <div className={styles.body}>
         <div className={styles.body}>
           <nav className={styles.navbar}>
-            <button
-              className={`${styles.navButton} ${
-                isCheckListVisible ? styles.activeButton : ""
-              }`}
-              onClick={handleChecklist}
-            >
-              <FaSuitcase />
-              <span>My Journey</span>
+            <button className={styles.navButton}>
+              <Link href={`/trip/${id}`} className={styles.navButton}>
+                <FaSuitcase />
+                <span>My Journey</span>
+              </Link>
             </button>
-            <button
-              className={`${styles.navButton} ${
-                isNoteVisible ? styles.activeButton : ""
-              }`}
-              onClick={handleNotes}
-            >
+            <button className={styles.navButton}>
               <FaStickyNote />
               <span>My Notes</span>
             </button>
-            <Link
-              href={`/wallet/${id}`}
-              className={`${styles.navButton} ${
-                isWalletVisible ? styles.activeButton : ""
-              }`}
-              onClick={handleWallet}
-            >
+            <button className={styles.navButton}>
               <FaMoneyBill />
               <span>Budget</span>
-            </Link>
+            </button>
           </nav>
-          {isCheckListVisible && (
-            <>
-              <CheckList list={todos} />
-              <div className={styles.addButtonContainer}>
-                <button className={styles.addButton} onClick={onAddTodo}>
-                  Add Todo
-                </button>
-              </div>
-            </>
-          )}
-          {/* {isWalletVisible && <Budget />} */}
-          {isNoteVisible && <Notes />}
         </div>
         <div>
           {list.map((cost, index) => (

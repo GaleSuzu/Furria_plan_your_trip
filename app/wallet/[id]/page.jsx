@@ -1,5 +1,4 @@
 "use client";
-import WalletModal from "@/app/components/walletModal/WalletModal";
 import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,20 +20,10 @@ const Wallet = ({ onAddCost }) => {
       .then((res) => res.json())
       .then((data) => setCosts(data.data));
   }, []);
-
   return (
     <div>
       <WalletWrapper list={costs} />
-      <div>
-        <button onClick={handleOpenModal}>Add Cost</button>
-        {showModal && (
-          <WalletModal
-            cityDate={cityDate}
-            cityId={id}
-            onClose={handleCloseModal}
-          />
-        )}
-      </div>
+
     </div>
   );
 };

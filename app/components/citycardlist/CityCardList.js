@@ -9,7 +9,6 @@ export default function CityCardList({ list = [], searchQuery }) {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    console.log("CityCardList received list:", list);
     let cities = Array.isArray(list) ? [...list] : [];
 
     if (searchQuery) {
@@ -28,7 +27,9 @@ export default function CityCardList({ list = [], searchQuery }) {
   };
 
   const handleCardClick = (id, cityName, from) => {
-    router.push(`/trip/${id}?name=${encodeURIComponent(cityName)}&date=${from}`);
+    router.push(
+      `/trip/${id}?name=${encodeURIComponent(cityName)}&date=${from}`
+    );
   };
 
   const displayedCities = showAll ? filteredCities : filteredCities.slice(0, 3);
@@ -37,7 +38,10 @@ export default function CityCardList({ list = [], searchQuery }) {
     <div className={styles.cityCardList}>
       <div className={styles.header}>
         <h2 className={styles.title}>Waiting for...</h2>
-        <button className={styles.showAllButton} onClick={() => setShowAll(!showAll)}>
+        <button
+          className={styles.showAllButton}
+          onClick={() => setShowAll(!showAll)}
+        >
           {showAll ? "Show Less" : "Show All"}
         </button>
       </div>

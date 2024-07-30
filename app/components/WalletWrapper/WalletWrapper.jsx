@@ -1,23 +1,61 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
 import Countdown from "react-countdown";
-import WalletCard from "../walletCard/walletCard";
-import NavigationBar from "../NavigationBar/NavigationBar";
-import WalletModal from "../walletModal/walletModal"; 
+import WalletCard from "../WalletCard/walletCard";
+import WalletModal from "../walletModal/WalletModal";
 import styles from "./walletwrapper.module.scss";
 import { useParams } from "next/navigation";
 import { globalContext } from "../../(context)/Provider";
 
-const WalletWrapper = ({ list }) => {
+const WalletWrapper = ({ list, cityName, cityDate, todos }) => {
   const { travelData } = useContext(globalContext);
-  const [cityImage, setCityImage] = useState(travelData.cityImage || "/images/default-city.jpg");
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
+  const [isCheckListVisible, setIsCheckListVisible] = useState(true);
+  const [isWalletVisible, setIsWalletVisible] = useState(false);
+  const [isNoteVisible, setIsNoteVisible] = useState(false);
+  const [cityImage, setCityImage] = useState("/images/default-city.jpg");
 
   useEffect(() => {
-    if (travelData.cityName && !travelData.cityImage) {
-      setCityImage(travelData.cityImage);
+    const fetchCityImage = async () => {
+      try {
+        const response = await axios.get(`https://pixabay.com/api/`, {
+          params: {
+            key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
+            q: cityName,
+            image_type: "photo",
+            per_page: 3,
+          },
+        });
+        if (response.data.hits.length > 0) {
+          setCityImage(response.data.hits[0].webformatURL);
+        }
+      } catch (error) {
+        console.error("Errore nel recupero dell'immagine della città:", error);
+      }
+    };
+
+    if (cityName) {
+      fetchCityImage();
     }
-  }, [travelData.cityName, travelData.cityImage]);
+  }, [cityName]);
+
+  const handleChecklist = () => {
+    setIsCheckListVisible(true);
+    setIsWalletVisible(false);
+    setIsNoteVisible(false);
+  };
+
+  const handleWallet = () => {
+    setIsCheckListVisible(false);
+    setIsNoteVisible(false);
+    setIsWalletVisible(true);
+  };
+
+  const handleNotes = () => {
+    setIsCheckListVisible(false);
+    setIsWalletVisible(false);
+    setIsNoteVisible(true);
+  };
 
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
@@ -52,7 +90,7 @@ const WalletWrapper = ({ list }) => {
         <div className={styles.cityInfo}>
           <img
             src={cityImage}
-            alt={travelData.cityName || "City"}
+            alt={cityName}
             className={styles.cityImage}
             onError={(e) => {
               e.target.onerror = null;
@@ -60,14 +98,57 @@ const WalletWrapper = ({ list }) => {
             }}
           />
           <div className={styles.cityDetails}>
-            <h1>{travelData.cityName}</h1>
-            <p>{travelData.cityDate ? new Date(travelData.cityDate).toLocaleDateString() : "N/A"}</p>
-            <Countdown date={travelData.cityDate} renderer={renderer} />
+            <h1>{cityName}</h1>
+            <p>{cityDate.toLocaleDateString()}</p>
+            <Countdown date={cityDate} renderer={renderer} />
           </div>
         </div>
       </header>
       <div className={styles.body}>
-        <NavigationBar activePage="wallet" travelData={travelData} />
+        <div className={styles.body}>
+          <nav className={styles.navbar}>
+            <button
+              className={`${styles.navButton} ${
+                isCheckListVisible ? styles.activeButton : ""
+              }`}
+              onClick={handleChecklist}
+            >
+              <FaSuitcase />
+              <span>My Journey</span>
+            </button>
+            <button
+              className={`${styles.navButton} ${
+                isNoteVisible ? styles.activeButton : ""
+              }`}
+              onClick={handleNotes}
+            >
+              <FaStickyNote />
+              <span>My Notes</span>
+            </button>
+            <Link
+              href={`/wallet/${id}`}
+              className={`${styles.navButton} ${
+                isWalletVisible ? styles.activeButton : ""
+              }`}
+              onClick={handleWallet}
+            >
+              <FaMoneyBill />
+              <span>Budget</span>
+            </Link>
+          </nav>
+          {isCheckListVisible && (
+            <>
+              <CheckList list={todos} />
+              <div className={styles.addButtonContainer}>
+                <button className={styles.addButton} onClick={onAddTodo}>
+                  Add Todo
+                </button>
+              </div>
+            </>
+          )}
+          {/* {isWalletVisible && <Budget />} */}
+          {isNoteVisible && <Notes />}
+        </div>
         <div>
           {list.map((cost, index) => (
             <WalletCard key={index} cost={cost} />
@@ -79,7 +160,9 @@ const WalletWrapper = ({ list }) => {
           </button>
         </div>
       </div>
-      {showModal && <WalletModal cityId={travelData.cityId} onClose={handleCloseModal} />}
+      {showModal && (
+        <WalletModal cityId={travelData.cityId} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from 'react';
-import { FaHome, FaUser } from 'react-icons/fa'; 
-import Image from 'next/image'; 
-import Link from 'next/link';
-import styles from './footer.module.scss';
-import LogoutModal from '../logoutmodal/LogoutModal';
+import { useState } from "react";
+import { FaHome, FaUser } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./footer.module.scss";
+import LogoutModal from "../logoutmodal/LogoutModal";
 
 export default function Footer() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -19,8 +19,7 @@ export default function Footer() {
   };
 
   const handleConfirmLogout = () => {
-
-    console.log('utente uscito');
+    console.log("utente uscito");
     setShowLogoutModal(false);
   };
 
@@ -31,12 +30,12 @@ export default function Footer() {
         <span>Home</span>
       </Link>
       <div className={styles.footerButton} onClick={handleLogoClick}>
-        <Image 
-          src="/furrialogo_corto.svg" 
-          alt="Logout" 
-          width={24} 
-          height={24} 
-          className={styles.inactiveIcon} 
+        <Image
+          src="/furrialogo_corto.svg"
+          alt="Logout"
+          width={24}
+          height={24}
+          className={styles.inactiveIcon}
         />
       </div>
       <Link href="/profile" className={styles.footerButton}>
@@ -44,7 +43,10 @@ export default function Footer() {
         <span>Profile</span>
       </Link>
       {showLogoutModal && (
-        <LogoutModal onClose={handleCloseModal} onConfirm={handleConfirmLogout} />
+        <LogoutModal
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmLogout}
+        />
       )}
     </div>
   );

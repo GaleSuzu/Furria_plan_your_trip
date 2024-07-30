@@ -1,10 +1,8 @@
 "use client";
 import { useParams, useSearchParams } from "next/navigation";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Travel from "@/app/components/travel/travel";
 import ModaleTodo from "@/app/components/modaleTodo/modaleTodo";
-import { globalContext } from "@/app/(context)/Provider";
-import axios from "axios";
 
 const Trip = () => {
   const { id } = useParams();
@@ -14,7 +12,6 @@ const Trip = () => {
   const [todos, setTodos] = useState([]);
   const [cityDate, setCityDate] = useState(date ? new Date(date) : new Date());
   const [showModal, setShowModal] = useState(false);
-  const { setTravelData } = useContext(globalContext);
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -41,42 +38,10 @@ const Trip = () => {
       }
     };
 
-    const fetchCityImage = async () => {
-      try {
-        const response = await axios.get(`https://pixabay.com/api/`, {
-          params: {
-            key: process.env.NEXT_PUBLIC_PIXABAY_API_KEY,
-            q: name,
-            image_type: "photo",
-            per_page: 3,
-          },
-        });
-        if (response.data.hits.length > 0) {
-          setTravelData(prevState => ({
-            ...prevState,
-            cityImage: response.data.hits[0].webformatURL,
-            cityName: name,
-            cityDate: cityDate
-          }));
-        }
-      } catch (error) {
-        console.error("Errore nel recupero dell'immagine della città:", error);
-      }
-    };
-
     if (id) {
       fetchTodos();
     }
-
-    if (name) {
-      fetchCityImage();
-    }
-
-    setTravelData({
-      cityName: name,
-      cityDate,
-    });
-  }, [id, name, cityDate, setTravelData]);
+  }, [id]);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -88,7 +53,12 @@ const Trip = () => {
 
   return (
     <div>
-      <Travel todos={todos} onAddTodo={handleOpenModal} />
+      <Travel
+        cityName={name}
+        cityDate={cityDate}
+        todos={todos}
+        onAddTodo={handleOpenModal}
+      />
       {showModal && <ModaleTodo cityId={id} onClose={handleCloseModal} />}
     </div>
   );

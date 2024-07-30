@@ -12,10 +12,10 @@ const About = () => {
           <strong>Furrìa</strong>
         </h2>
         <h3>
-          <strong>"Chi siamo"</strong>
+          <strong>{`"Chi siamo"`}</strong>
         </h3>
         <p>
-          Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro
+          {`Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro
           passioni per creare <strong>Furrìa</strong>, l'app che semplifica la
           pianificazione dei viaggi. Grazie alla nostra esperienza nel settore
           del turismo e alle nostre competenze tecniche, abbiamo sviluppato una
@@ -28,7 +28,7 @@ const About = () => {
           ogni viaggio sia un'opportunità per crescere e imparare. Perché
           vogliamo che tu possa vivere esperienze autentiche e indimenticabili.
           Perché siamo appassionati di tecnologia e vogliamo utilizzare le
-          nostre competenze per migliorare la tua vita."
+          nostre competenze per migliorare la tua vita."`}
         </p>
       </section>
       <h2>The Developers</h2>

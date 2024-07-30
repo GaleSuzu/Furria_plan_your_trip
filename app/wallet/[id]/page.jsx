@@ -1,5 +1,4 @@
 "use client";
-import WalletModal from "@/app/components/walletModal/WalletModal";
 import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,10 +20,10 @@ const Wallet = ({ onAddCost }) => {
       .then((res) => res.json())
       .then((data) => setCosts(data.data));
   }, []);
-
   return (
     <div>
       <WalletWrapper list={costs} />
+<<<<<<< HEAD
       <div>
         {showModal && (
           <WalletModal
@@ -34,6 +33,9 @@ const Wallet = ({ onAddCost }) => {
           />
         )}
       </div>
+=======
+
+>>>>>>> 75a529f48c9a00033dc92b299dadf9e73a052322
     </div>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
+
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import WalletCard from "../WalletCard/walletCard";
 import WalletModal from "../walletModal/WalletModal";

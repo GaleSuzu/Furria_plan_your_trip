@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const About = () => {
   return (
@@ -34,73 +36,63 @@ const About = () => {
         <div>
           <div>
             <Image
-              //src="../app/public/Images/noi/Susanna.jpg"
+              src="/images/noi/Susanna.jpg"
               alt=""
-              width={200}
+              width={150}
               height={170}
             />
             <h3>Susanna Palmeri</h3>
             <p>Full stack Developer</p>
             <div>
               <Link href="https://github.com/GaleSuzu">
-                <Image src="./gitHub.svg" alt="GitHub" width={40} height={40} />
+                <FaGithub /> Github
               </Link>
               <Link href="https://www.linkedin.com/in/susanna-palmeri">
-                <Image
-                  src="./linkedin.svg"
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                />
+                <FaLinkedin /> Linkedin
               </Link>
             </div>
           </div>
           <div>
             <Image
-              //src="./app/public/Images/noi/Roberta.jpg"
+              src="/Images/noi/Roberta.jpg"
               alt="Roberta Favuzza"
-              width={200}
-              height={170}
+              width={150}
+              height={150}
             />
             <h3>Roberta Favuzza</h3>
             <p>Full stack Developer</p>
             <div>
               <Link href="https://github.com/robertafavuzza">
-                <Image src="./gitHub.svg" alt="GitHub" width={40} height={40} />
+                <FaGithub /> Github
               </Link>
-              <Link href="">
-                <Image
-                  src="./linkedin.svg"
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                />
-              </Link>
-            </div>
-          </div>
-
-          <div>
-            <Image src="" alt="" width={200} height={170} />
-            <h3>Giuseppe Neri</h3>
-            <p>Full stack Developer</p>
-            <div>
-              <Link href="https://github.com/GiuseppeSonny">
-                <Image src="./gitHub.svg" alt="GitHub" width={40} height={40} />
-              </Link>
-              <Link href="https://www.linkedin.com/in/giuseppe-neri23/">
-                <Image
-                  src="./linkedin.svg"
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                />
+              <Link href="https://www.linkedin.com/in/roberta-favuzza">
+                <FaLinkedin /> Linkedin
               </Link>
             </div>
           </div>
 
           <div>
             <Image
-              // src="../app/public/Images/noi/Paolo.jpg"
+              src="/images/noi/Peppe.jpg"
+              alt=""
+              width={200}
+              height={170}
+            />
+            <h3>Giuseppe Neri</h3>
+            <p>Full stack Developer</p>
+            <div>
+              <Link href="https://github.com/GiuseppeSonny">
+                <FaGithub /> Github
+              </Link>
+              <Link href="https://www.linkedin.com/in/giuseppe-neri23/">
+                <FaLinkedin /> Linkedin
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <Image
+              src="/images/noi/Paolo.jpg"
               alt=""
               width={200}
               height={170}
@@ -109,37 +101,31 @@ const About = () => {
             <p>Full stack Developer</p>
             <div>
               <Link href="https://github.com/Paolo131084">
-                <Image src="./gitHub.svg" alt="GitHub" width={40} height={40} />
+                <FaGithub /> Github
               </Link>
               <Link href="http://www.linkedin.com/in/paolo-caramia">
-                <Image
-                  src="./linkedin.svg"
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                />
+                <FaLinkedin /> Linkedin
               </Link>
             </div>
           </div>
 
           <div>
-            <Image src="" alt="" width={200} height={170} />
+            <Image
+              src="/images/noi/Alberto.jpg"
+              alt=""
+              width={200}
+              height={170}
+            />
             <h3>Alberto Palmeri</h3>
             <p>Full stack Developer</p>
             <div>
               <Link href="https://github.com/Alb4rto">
-                <Image src="./gitHub.svg" alt="GitHub" width={40} height={40} />
+                <FaGithub /> Github
               </Link>
-              <Link href="">
-                <Image
-                  src="./linkedin.svg"
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                />
+              <Link href="https://www.linkedin.com/in/alberto-palmeri">
+                <FaLinkedin /> Linkedin
               </Link>
             </div>
-            <div></div>
           </div>
 
           <Link href="/">

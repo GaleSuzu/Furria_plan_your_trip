@@ -9,7 +9,8 @@ export default function CityCardList({ list = [], searchQuery }) {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    let cities = [...list]; 
+    console.log("CityCardList received list:", list);
+    let cities = Array.isArray(list) ? [...list] : [];
 
     if (searchQuery) {
       cities = cities.filter((city) =>

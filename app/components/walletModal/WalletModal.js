@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "@/app/components/WalletModal/WalletModal.module.scss";
+import styles from "./walletmodal.module.scss";
 
 const WalletModal = ({ cityId, onClose }) => {
+  const [place, setPlace] = useState("");
   const [cost, setCost] = useState(null);
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
@@ -10,6 +11,7 @@ const WalletModal = ({ cityId, onClose }) => {
     e.preventDefault();
 
     const costData = {
+      place,
       cost,
       cityId,
       text,
@@ -43,6 +45,14 @@ const WalletModal = ({ cityId, onClose }) => {
         <h2 className={styles.modalTitle}>Aggiungi un costo</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
+            <label>Luogo:</label>
+            <input
+              type="text"
+              value={place}
+              onChange={(e) => setPlace(e.target.value)}
+            />
+          </div>
+          <div className={styles.formGroup}>
             <label>Costo:</label>
             <input type="number" onChange={(e) => setCost(e.target.value)} />
           </div>
@@ -50,8 +60,8 @@ const WalletModal = ({ cityId, onClose }) => {
             <label>Testo:</label>
             <input type="text" onChange={(e) => setText(e.target.value)} />
           </div>
-          <label>Categoria:</label>
           <div className={styles.formGroup}>
+            <label>Categoria:</label>
             <input type="text" onChange={(e) => setCategory(e.target.value)} />
           </div>
           <div className={styles.buttonGroup}>

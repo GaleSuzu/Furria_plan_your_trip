@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./citycardlist.module.scss";
-import CityCard from "../cityCard/CityCard";
+import CityCard from "../cityCard/cityCard";
 
 export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();

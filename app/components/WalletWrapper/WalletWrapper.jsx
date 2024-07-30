@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
-import WalletCard from "../WalletCard/walletCard";
+import WalletCard from "../walletCard/walletCard";
 import WalletModal from "../walletModal/WalletModal";
 import styles from "./walletwrapper.module.scss";
 import { useParams } from "next/navigation";

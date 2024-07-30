@@ -1,10 +1,10 @@
 import styles from "./citycard.module.scss";
 import { useRef, useState, useEffect } from "react";
-import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/Save';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CloseIcon from '@mui/icons-material/Close';
-import axios from 'axios';
+import EditIcon from "@mui/icons-material/Edit";
+import SaveIcon from "@mui/icons-material/Save";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
 
 const CityCard = ({ city, id, onClick, from, to }) => {
   const cityInput = useRef(null);
@@ -124,7 +124,11 @@ const CityCard = ({ city, id, onClick, from, to }) => {
         </div>
         <div className={styles.actionButtons}>
           <button onClick={handleActive}>
-            {isActive ? <CloseIcon className={styles.icon} /> : <EditIcon className={styles.icon} />}
+            {isActive ? (
+              <CloseIcon className={styles.icon} />
+            ) : (
+              <EditIcon className={styles.icon} />
+            )}
           </button>
           {isActive && (
             <button onClick={putCity}>

@@ -23,7 +23,6 @@ const Wallet = ({ onAddCost }) => {
   return (
     <div>
       <WalletWrapper list={costs} />
-
     </div>
   );
 };

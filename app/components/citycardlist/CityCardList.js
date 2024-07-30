@@ -20,7 +20,7 @@ export default function CityCardList({ list = [], searchQuery }) {
     cities.sort((a, b) => new Date(a.from) - new Date(b.from));
 
     setFilteredCities(cities);
-  }, [searchQuery, list]);
+  }, []);
 
   const navigateToCityPlan = () => {
     router.push("/city-plan");

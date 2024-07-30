@@ -1,36 +1,40 @@
 "use client";
-import WalletModal from "@/app/components/walletModal/WalletModal";
-import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import WalletWrapper from "@/app/components/WalletWrapper/WalletWrapper";
+import { globalContext } from "@/app/(context)/Provider";
 
-const Wallet = ({ onAddCost }) => {
-  const { id } = useParams();
-  const [costs, setCosts] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const handleOpenModal = () => {
-    setShowModal(true);
+const WalletPage = () => {
+const { id } = useParams();
+const [costs, setCosts] = useState([]);
+const { travelData, setTravelData } = useContext(globalContext);
+
+useEffect(() => {
+  const fetchCosts = async () => {
+    try {
+      const response = await fetch(`/api/cost?cityId=${id}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch costs");
+      }
+      const data = await response.json();
+      setCosts(data.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  if (id) {
+    fetchCosts();
+  }
+}, [id]);
 
-  useEffect(() => {
-    fetch(`/api/cost?cityId=${id}`)
-      .then((res) => res.json())
-      .then((data) => setCosts(data.data));
-  }, []);
-
-  return (
-    <div>
-      <WalletWrapper list={costs} />
-      <div>
-        <button onClick={handleOpenModal}>Add Cost</button>
-        {showModal && <WalletModal cityId={id} onClose={handleCloseModal} />}
-      </div>
-    </div>
-  );
+return (
+  <div>
+    <WalletWrapper
+      list={costs}
+    />
+  </div>
+);
 };
 
-export default Wallet;
+export default WalletPage;

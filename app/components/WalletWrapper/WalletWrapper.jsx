@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Countdown from "react-countdown";
 import WalletCard from "../walletCard/walletCard";
 import NavigationBar from "../NavigationBar/NavigationBar";
+import WalletModal from "../walletModal/walletModal"; 
 import styles from "./walletwrapper.module.scss";
 import { useParams } from "next/navigation";
 import { globalContext } from "../../(context)/Provider";
@@ -10,6 +11,7 @@ import { globalContext } from "../../(context)/Provider";
 const WalletWrapper = ({ list }) => {
   const { travelData } = useContext(globalContext);
   const [cityImage, setCityImage] = useState(travelData.cityImage || "/images/default-city.jpg");
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     if (travelData.cityName && !travelData.cityImage) {
@@ -34,6 +36,14 @@ const WalletWrapper = ({ list }) => {
         </div>
       </div>
     );
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -63,7 +73,13 @@ const WalletWrapper = ({ list }) => {
             <WalletCard key={index} cost={cost} />
           ))}
         </div>
+        <div className={styles.addButtonContainer}>
+          <button className={styles.addButton} onClick={handleOpenModal}>
+            Add Expense
+          </button>
+        </div>
       </div>
+      {showModal && <WalletModal cityId={travelData.cityId} onClose={handleCloseModal} />}
     </div>
   );
 };

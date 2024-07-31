@@ -46,19 +46,19 @@ Apri il tuo browser e vai a: https://furria.vercel.app
 👥 Team di Sviluppo
 
 **Susanna Palmeri**
-Ruolo: Frontend Developer (gestione approfondita del lato Backend e dei Database)
+Frontend Developer 
 
 **Roberta Favuzza**
-Ruolo: Frontend Developer (gestione approfondita delle API e del Design grafico)
+Frontend Developer 
 
 **Giuseppe Neri**
-Ruolo: Frontend Developer
+Frontend Developer
 
 **Paolo Caramia**
-Ruolo: Frontend 
+Frontend 
 
 **Alberto Palmeri**
-Ruolo: Frontend Developer
+Frontend Developer
 
 
 📞 Contattaci

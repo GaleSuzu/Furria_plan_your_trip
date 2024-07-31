@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./cityplan.module.scss";
 import MapModal from "../mapmodal/MapModal";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
@@ -15,22 +15,10 @@ export default function CityPlan() {
     new Date().toISOString().split("T")[0]
   );
   const [showMapModal, setShowMapModal] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
   const router = useRouter();
 
-  const handleCityChange = async (e) => {
-    const value = e.target.value;
-    setCity(value);
-
-    if (value.length > 2) {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${value}&addressdetails=1&limit=5`
-      );
-      const data = await response.json();
-      setSuggestions(data);
-    } else {
-      setSuggestions([]);
-    }
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -53,16 +41,10 @@ export default function CityPlan() {
         throw new Error("Errore nella creazione della città");
       }
 
-      // window.location.href = "/";
       router.push("/");
     } catch (error) {
       console.error("Errore nella pianificazione del viaggio:", error);
     }
-  };
-
-  const handleSuggestionClick = (suggestion) => {
-    setCity(suggestion.display_name);
-    setSuggestions([]);
   };
 
   return (
@@ -86,15 +68,6 @@ export default function CityPlan() {
             onClick={() => setShowMapModal(true)}
           />
         </div>
-        {suggestions.length > 0 && (
-          <ul className={styles.suggestions}>
-            {suggestions.map((suggestion, index) => (
-              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                {suggestion.display_name}
-              </li>
-            ))}
-          </ul>
-        )}
         <label htmlFor="dateStart">Inizio:</label>
         <input
           type="date"

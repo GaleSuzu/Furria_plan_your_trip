@@ -47,14 +47,10 @@ const WalletWrapper = ({ list, cityName }) => {
     setShowModal(false);
   };
 
-  console.log(cityImage);
-
   return (
     <div className={styles.wallet}>
       <header className={styles.header}>
         <div className={styles.cityInfo}>
-          {" "}
-          {/* non funziona */}
           <img
             src={cityImage}
             alt={cityName}
@@ -72,15 +68,13 @@ const WalletWrapper = ({ list, cityName }) => {
       <div className={styles.body}>
         <div>
           <nav className={styles.navbar}>
-            <button className={styles.navButton}>
-              <Link
-                href={`/trip/${id}?name=${cityName}`}
-                className={styles.navButton}
-              >
-                <FaSuitcase />
-                <span>My Journey</span>
-              </Link>
-            </button>
+            <Link
+              href={`/trip/${id}?name=${cityName}`}
+              className={styles.navButton}
+            >
+              <FaSuitcase />
+              <span>My Journey</span>
+            </Link>
             <button className={styles.navButton}>
               <FaStickyNote />
               <span>My Notes</span>
@@ -97,14 +91,14 @@ const WalletWrapper = ({ list, cityName }) => {
           ))}
         </div>
         <div className={styles.addButtonContainer}>
-          {/* <button className={styles.addButton} onClick={handleOpenModal}>
+          <button className={styles.addButton} onClick={handleOpenModal}>
             Add Expense
-          </button> */}
+          </button>
         </div>
       </div>
-      {/* {showModal && (
+      {showModal && (
         <WalletModal cityId={travelData.cityId} onClose={handleCloseModal} />
-      )} */}
+      )}
     </div>
   );
 };

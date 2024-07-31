@@ -1,21 +1,35 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styles from "./page.module.scss";
 
 const About = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage("");
+  };
+
   return (
     <div className={styles.main}>
       <section className={styles.mainWrapper}>
-        <h2>
+        <h2 className={styles.title}>
           <strong>Furrìa</strong>
         </h2>
-        <h3>
+        <h3 className={styles.subtitle}>
           <strong>{`"Chi siamo"`}</strong>
         </h3>
-        <p>
+        <p className={styles.text}>
           {`Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro
           passioni per creare: Furrìa, l'app che semplifica la
           pianificazione dei viaggi. Grazie alla nostra esperienza nel settore
@@ -32,111 +46,81 @@ const About = () => {
           nostre competenze per migliorare la tua vita.`}
         </p>
       </section>
-      <h2>The Developers</h2>
+      <h2 className={styles.title}>The Developers</h2>
       <section className={styles.teamDescription}>
         <div className={styles.teamCard}>
-          <div className={styles.card}>
-            <Image
-              src="/images/noi/Susanna.jpg"
-              alt=""
-              width={150}
-              height={170}
-              className={styles.image}
-            />
-            <h3>Susanna Palmeri</h3>
-            <p>Full stack Developer</p>
-            <div className={styles.btnWapper}>
-              <Link href="https://github.com/GaleSuzu">
-                <FaGithub /> Github
-              </Link>
-              <Link href="https://www.linkedin.com/in/susanna-palmeri">
-                <FaLinkedin /> Linkedin
-              </Link>
+          {developers.map((dev) => (
+            <div className={styles.card} key={dev.name}>
+              <Image
+                src={dev.image}
+                alt={dev.name}
+                width={150}
+                height={170}
+                className={styles.image}
+                onClick={() => handleImageClick(dev.image)}
+              />
+              <h3 className={styles.cardTitle}>{dev.name}</h3>
+              <p className={styles.cardText}>{dev.role}</p>
+              <div className={styles.btnWrapper}>
+                <Link href={dev.github}>
+                  <FaGithub /> Github
+                </Link>
+                <Link href={dev.linkedin}>
+                  <FaLinkedin /> Linkedin
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.card}>
-            <Image
-              src="/Images/noi/Roberta.jpg"
-              alt="Roberta Favuzza"
-              width={150}
-              height={150}
-              className={styles.image}
-            />
-            <h3>Roberta Favuzza</h3>
-            <p>Full stack Developer</p>
-            <div className={styles.btnWapper}>
-              <Link href="https://github.com/robertafavuzza">
-                <FaGithub /> Github
-              </Link>
-              <Link href="https://www.linkedin.com/in/roberta-favuzza">
-                <FaLinkedin /> Linkedin
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <Image
-              src="/images/noi/Peppe.jpg"
-              alt=""
-              width={200}
-              height={170}
-              className={styles.image}
-            />
-            <h3>Giuseppe Neri</h3>
-            <p>Full stack Developer</p>
-            <div className={styles.btnWapper}>
-              <Link href="https://github.com/GiuseppeSonny">
-                <FaGithub /> Github
-              </Link>
-              <Link href="https://www.linkedin.com/in/giuseppe-neri23/">
-                <FaLinkedin /> Linkedin
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <Image
-              src="/images/noi/Paolo.jpg"
-              alt=""
-              width={200}
-              height={170}
-              className={styles.image}
-            />
-            <h3>Paolo Caramia</h3>
-            <p>Full stack Developer</p>
-            <div className={styles.btnWapper}>
-              <Link href="https://github.com/Paolo131084">
-                <FaGithub /> Github
-              </Link>
-              <Link href="http://www.linkedin.com/in/paolo-caramia">
-                <FaLinkedin /> Linkedin
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <Image
-              src="/images/noi/Alberto.jpg"
-              alt=""
-              width={200}
-              height={170}
-              className={styles.image}
-            />
-            <h3>Alberto Palmeri</h3>
-            <p>Full stack Developer</p>
-            <div className={styles.btnWapper}>
-              <Link href="https://github.com/Alb4rto">
-                <FaGithub /> Github
-              </Link>
-              <Link href="https://www.linkedin.com/in/alberto-palmeri">
-                <FaLinkedin /> Linkedin
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
+      {isModalOpen && (
+        <div className={styles.modalOverlay} onClick={handleCloseModal}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <Image src={selectedImage} alt="Modal Image" width={500} height={500} />
+            <button className={styles.closeButton} onClick={handleCloseModal}>X</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
+const developers = [
+  {
+    name: "Susanna Palmeri",
+    role: "Full stack Developer",
+    image: "/images/noi/Susanna.jpg",
+    github: "https://github.com/GaleSuzu",
+    linkedin: "https://www.linkedin.com/in/susanna-palmeri",
+  },
+  {
+    name: "Roberta Favuzza",
+    role: "Full stack Developer",
+    image: "/Images/noi/Roberta.jpg",
+    github: "https://github.com/robertafavuzza",
+    linkedin: "https://www.linkedin.com/in/roberta-favuzza",
+  },
+  {
+    name: "Giuseppe Neri",
+    role: "Full stack Developer",
+    image: "/images/noi/Peppe.jpg",
+    github: "https://github.com/GiuseppeSonny",
+    linkedin: "https://www.linkedin.com/in/giuseppe-neri23/",
+  },
+  {
+    name: "Paolo Caramia",
+    role: "Full stack Developer",
+    image: "/images/noi/Paolo.jpg",
+    github: "https://github.com/Paolo131084",
+    linkedin: "http://www.linkedin.com/in/paolo-caramia",
+  },
+  {
+    name: "Alberto Palmeri",
+    role: "Full stack Developer",
+    image: "/images/noi/Alberto.jpg",
+    github: "https://github.com/Alb4rto",
+    linkedin: "https://www.linkedin.com/in/alberto-palmeri",
+  },
+];
 
 export default About;

@@ -125,3 +125,19 @@
   background-color: #999;
   transform: scale(1.05);
 }
+
+.placeInputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mapIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #8673f5;
+  transition: color 0.3s;
+}
+
+.mapIcon:hover {
+  color: #6a5fc7;
+}

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import { FaMapMarkerAlt } from 'react-icons/fa';
-import styles from './mapmodal.module.scss';
+import React, { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import styles from "./mapmodal.module.scss";
 
 const MapModal = ({ city, onClose }) => {
   const [position, setPosition] = useState(null);
@@ -24,13 +23,13 @@ const MapModal = ({ city, onClose }) => {
   }, [city]);
 
   const customIcon = L.divIcon({
-    className: 'custom-icon',
+    className: "custom-icon",
     html: `<div class="${styles.customIconContainer}"><i class="fa fa-map-marker-alt ${styles.customIcon}"></i></div>`
   });
 
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalContent}>
+    <div className={styles.mapModal}>
+      <div className={styles.mapModalContent}>
         <button className={styles.closeButton} onClick={onClose}>×</button>
         {position && (
           <MapContainer center={position} zoom={13} style={{ height: "400px", width: "100%" }}>

@@ -2,13 +2,15 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./modaleTodo.module.scss";
-import { FaMapMarkerAlt, FaClock, FaStickyNote } from "react-icons/fa";
+import { FaMapMarkerAlt, FaClock, FaStickyNote, FaLocationArrow } from "react-icons/fa";
+import MapModal from "../mapmodal/MapModal";
 
 const ModaleTodo = ({ cityId, onClose }) => {
   const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [time, setTime] = useState("");
   const [text, setText] = useState("");
+  const [showMap, setShowMap] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,13 +62,16 @@ const ModaleTodo = ({ cityId, onClose }) => {
             <label className={styles.label}>
               <FaMapMarkerAlt className={styles.icon} /> Place
             </label>
-            <input
-              type="text"
-              placeholder="Enter place"
-              value={place}
-              onChange={(e) => setPlace(e.target.value)}
-              className={styles.input}
-            />
+            <div className={styles.placeInputContainer}>
+              <input
+                type="text"
+                placeholder="Enter place"
+                value={place}
+                onChange={(e) => setPlace(e.target.value)}
+                className={styles.input}
+              />
+              <FaLocationArrow className={styles.mapIcon} onClick={() => setShowMap(true)} />
+            </div>
           </div>
           <div className={styles.inputGroup}>
             <label className={styles.label}>
@@ -104,6 +109,7 @@ const ModaleTodo = ({ cityId, onClose }) => {
           </div>
         </form>
       </div>
+      {showMap && <MapModal city={place} onClose={() => setShowMap(false)} />}
     </div>
   );
 };

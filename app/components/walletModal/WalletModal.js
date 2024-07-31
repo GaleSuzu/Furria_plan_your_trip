@@ -1,5 +1,6 @@
 import { useState } from "react";
-import styles from "./WalletModal.module.scss";
+import styles from "./walletModal.module.scss";
+import { FaUtensils, FaFilm, FaLandmark, FaBus, FaHotel } from "react-icons/fa";
 
 const WalletModal = ({ cityId, onClose }) => {
   const [place, setPlace] = useState("");
@@ -38,7 +39,14 @@ const WalletModal = ({ cityId, onClose }) => {
       console.error("Error:", error);
     }
   };
-  console.log(cityId);
+
+  const categories = [
+    { name: "Cibo", icon: <FaUtensils /> },
+    { name: "Spettacolo", icon: <FaFilm /> },
+    { name: "Musei", icon: <FaLandmark /> },
+    { name: "Trasporti", icon: <FaBus /> },
+    { name: "Hotels", icon: <FaHotel /> },
+  ];
 
   return (
     <div className={styles.modalOverlay}>
@@ -63,7 +71,18 @@ const WalletModal = ({ cityId, onClose }) => {
           </div>
           <div className={styles.formGroup}>
             <label>Categoria:</label>
-            <input type="text" onChange={(e) => setCategory(e.target.value)} />
+            <div className={styles.categoryContainer}>
+              {categories.map((cat) => (
+                <div
+                  key={cat.name}
+                  className={`${styles.categoryItem} ${category === cat.name ? styles.activeCategory : ""}`}
+                  onClick={() => setCategory(cat.name)}
+                >
+                  {cat.icon}
+                  <span>{cat.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <div className={styles.buttonGroup}>
             <button className={styles.cancelButton} onClick={onClose}>

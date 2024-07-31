@@ -5,22 +5,6 @@ import CityCard from "../cityCard/cityCard";
 
 export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();
-  const [filteredCities, setFilteredCities] = useState([]);
-  const [showAll, setShowAll] = useState(false);
-
-  useEffect(() => {
-    let cities = Array.isArray(list) ? [...list] : [];
-
-    if (searchQuery) {
-      cities = cities.filter((city) =>
-        city.city.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    cities.sort((a, b) => new Date(a.from) - new Date(b.from));
-
-    setFilteredCities(cities);
-  }, []);
 
   const navigateToCityPlan = () => {
     router.push("/city-plan");
@@ -32,21 +16,13 @@ export default function CityCardList({ list = [], searchQuery }) {
     );
   };
 
-  const displayedCities = showAll ? filteredCities : filteredCities.slice(0, 3);
-
   return (
     <div className={styles.cityCardList}>
       <div className={styles.header}>
         <h2 className={styles.title}>Waiting for...</h2>
-        <button
-          className={styles.showAllButton}
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Show Less" : "Show All"}
-        </button>
       </div>
       <ul className={styles.cardsContainer}>
-        {displayedCities.map((city, index) => (
+        {list.map((city, index) => (
           <CityCard
             key={index}
             city={city.city}
@@ -56,15 +32,6 @@ export default function CityCardList({ list = [], searchQuery }) {
             onClick={() => handleCardClick(city._id, city.city, city.from)}
           />
         ))}
-        {!showAll && filteredCities.length > 3 && (
-          <li className={styles.dotsContainer}>
-            <span className={styles.dots}>
-              <span className={styles.dot}>.</span>
-              <span className={styles.dot}>.</span>
-              <span className={styles.dot}>.</span>
-            </span>
-          </li>
-        )}
       </ul>
       <div className={styles.addButtonContainer}>
         <button className={styles.addButton} onClick={navigateToCityPlan}>

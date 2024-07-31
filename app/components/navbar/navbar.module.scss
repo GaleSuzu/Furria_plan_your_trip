@@ -5,14 +5,15 @@
 }
 
 .navbar {
+  background-color: #878fe0;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #878FE0;
-  padding: 10px;
+  padding: 10px 0;
+  z-index: 1000;
   max-width: 640px;
   width: 100%;
-  position: relative; 
 }
 
 .profileContainer {
@@ -20,6 +21,7 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .logo {
@@ -31,11 +33,12 @@
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .dropdownMenu {
   position: absolute;
-  top: 60px; 
+  top: 60px;
   right: 20px;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

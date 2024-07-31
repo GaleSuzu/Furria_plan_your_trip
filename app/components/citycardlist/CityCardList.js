@@ -3,8 +3,23 @@ import { useRouter } from "next/navigation";
 import styles from "./citycardlist.module.scss";
 import CityCard from "../cityCard/cityCard";
 
-export default function CityCardList({ list = [] }) {
+export default function CityCardList({ list = [], searchQuery }) {
   const router = useRouter();
+  const [filteredCities, setFilteredCities] = useState([]);
+
+  useEffect(() => {
+    let cities = [...list];
+
+    if (searchQuery) {
+      cities = cities.filter((city) =>
+        city.city.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    cities.sort((a, b) => new Date(a.from) - new Date(b.from));
+
+    setFilteredCities(cities);
+  }, [searchQuery, list]);
 
   const navigateToCityPlan = () => {
     router.push("/city-plan");
@@ -22,7 +37,7 @@ export default function CityCardList({ list = [] }) {
         <h2 className={styles.title}>Waiting for...</h2>
       </div>
       <ul className={styles.cardsContainer}>
-        {list.map((city, index) => (
+        {filteredCities.map((city, index) => (
           <CityCard
             key={index}
             city={city.city}

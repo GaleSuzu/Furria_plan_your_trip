@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import styles from "./citycardlist.module.scss";
 import CityCard from "../cityCard/cityCard";
 
-export default function CityCardList({ list = [], searchQuery }) {
+export default function CityCardList({ list = [] }) {
   const router = useRouter();
 
   const navigateToCityPlan = () => {

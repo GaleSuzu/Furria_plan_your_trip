@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./walletModal.module.scss";
+import styles from "./WalletModal.module.scss";
 import { FaUtensils, FaFilm, FaLandmark, FaBus, FaHotel } from "react-icons/fa";
 
 const WalletModal = ({ cityId, onClose }) => {
@@ -75,7 +75,9 @@ const WalletModal = ({ cityId, onClose }) => {
               {categories.map((cat) => (
                 <div
                   key={cat.name}
-                  className={`${styles.categoryItem} ${category === cat.name ? styles.activeCategory : ""}`}
+                  className={`${styles.categoryItem} ${
+                    category === cat.name ? styles.activeCategory : ""
+                  }`}
                   onClick={() => setCategory(cat.name)}
                 >
                   {cat.icon}

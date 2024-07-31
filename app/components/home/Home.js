@@ -3,7 +3,7 @@
 import styles from "./home.module.scss";
 import CityCardList from "../citycardlist/CityCardList";
 import Searchbar from "../searchbar/Searchbar";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { globalContext } from "@/app/(context)/Provider";
 
 export default function Home() {

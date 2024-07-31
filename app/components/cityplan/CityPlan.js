@@ -40,8 +40,7 @@ export default function CityPlan() {
       if (!response.ok) {
         throw new Error("Errore nella creazione della città");
       }
-
-      router.push("/");
+      window.location.href = "/";
     } catch (error) {
       console.error("Errore nella pianificazione del viaggio:", error);
     }

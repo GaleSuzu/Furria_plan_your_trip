@@ -3,21 +3,29 @@
 import { useState, useEffect } from "react";
 import styles from "./cityplan.module.scss";
 import MapModal from "../mapmodal/MapModal";
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import { useRouter } from "next/navigation";
 
 export default function CityPlan() {
   const [city, setCity] = useState("");
-  const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
-  const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
+  const [startDate, setStartDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const [endDate, setEndDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const [showMapModal, setShowMapModal] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
+  const router = useRouter();
 
   const handleCityChange = async (e) => {
     const value = e.target.value;
     setCity(value);
 
     if (value.length > 2) {
-      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${value}&addressdetails=1&limit=5`);
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${value}&addressdetails=1&limit=5`
+      );
       const data = await response.json();
       setSuggestions(data);
     } else {
@@ -45,7 +53,8 @@ export default function CityPlan() {
         throw new Error("Errore nella creazione della città");
       }
 
-      window.location.href = "/";
+      // window.location.href = "/";
+      router.push("/");
     } catch (error) {
       console.error("Errore nella pianificazione del viaggio:", error);
     }

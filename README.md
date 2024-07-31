@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📖 Furrìa - Pianificazione di Viaggi
 
-## Getting Started
+Benvenuti in **Furrìa**, l'app che semplifica la pianificazione dei viaggi! 🚀🌍
 
-First, run the development server:
+## 🎯 Missione
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro passioni per creare **Furrìa**, un'app completa e personalizzabile per accompagnarti in ogni tua avventura. Grazie alla nostra esperienza nel settore del turismo e alle nostre competenze tecniche, vogliamo rivoluzionare il modo in cui le persone pianificano e vivono i loro viaggi, in modo semplice e a portata di mano. 🌟✈️
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Funzionalità
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 🗺️ Pianificazione del Viaggio
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Organizzazione degli itinerari**: Pianifica i tuoi itinerari giornalieri con facilità.
+- **Aggiunta di note**: Tieni traccia di tutti i tuoi pensieri e idee durante il viaggio. (COMING SOON)
+- **Gestione del budget**: Monitora le tue spese per evitare sorprese.
 
-## Learn More
+### 📝 Checklists
 
-To learn more about Next.js, take a look at the following resources:
+- **Liste di controllo**: Non dimenticare nulla con le nostre checklists personalizzabili.
+- **Promemoria**: Imposta promemoria per attività e cose da fare.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🛠️ Dettagli Tecnici
 
-## Deploy on Vercel
+### 🏗️ Struttura del Progetto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Frontend**: Sviluppato con React.js e Next.js per un rendering lato server e un'ottima esperienza utente.
+- **Stile e Animazioni**: Utilizziamo CSS/SASS per creare animazioni fluide e interazioni con l'interfaccia.
+- **Backend**: Basato su Node.js per la gestione delle API .
+- **Database**: MongoDB come database NoSQL per gestire i dati degli utenti e dei viaggi.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 📦 Librerie e Strumenti
+
+- **React**: Per la creazione di interfacce utente dinamiche.
+- **Next.js**: Per il rendering lato server e l'ottimizzazione delle prestazioni.
+- **Axios**: Per le richieste HTTP verso le nostre API.
+- **React Icons**: Per un'ampia gamma di icone facilmente integrabili.
+- **API**: Utilizzo di API open-source come Boring Avatar, Pixabay  e Leafletjs.
+
+
+# 📖 Visita l'applicazione
+
+Apri il tuo browser e vai a: https://furria.vercel.app
+
+
+👥 Team di Sviluppo
+Susanna Palmeri
+
+
+Ruolo: Full Stack Developer
+Roberta Favuzza
+
+
+Ruolo: Full Stack Developer
+Giuseppe Neri
+
+
+Ruolo: Full Stack Developer
+Paolo Caramia
+
+
+Ruolo: Full Stack Developer
+Alberto Palmeri
+
+
+Ruolo: Full Stack Developer
+📞 Contattaci
+Per qualsiasi domanda, problema o suggerimento, non esitare a contattarci. Siamo sempre felici di aiutarti!
+
+Speriamo che Furrìa ti aiuti a pianificare viaggi indimenticabili! Buon viaggio! 🌟🚀🌍
+
+© 2024 Furrìa. Tutti i diritti riservati.

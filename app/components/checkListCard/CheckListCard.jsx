@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "@/app/components/checkListCard/CheckListCard.module.scss";
+import styles from "./CheckListCard.module.scss";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
@@ -56,59 +56,59 @@ const CheckListCard = ({ todo }) => {
   };
 
   return (
-    <li className={styles.checkItem}>
-      <div className={styles.todoContent}>
-        {isActive ? (
-          <form onSubmit={editTodo} className={styles.form}>
-            <input
-              type="date"
-              defaultValue={new Date(todo.date).toISOString().split("T")[0]}
-              onChange={(e) => (todo.date = e.target.value)}
-            />
-            <input
-              type="time"
-              defaultValue={todo.time}
-              onChange={(e) => (todo.time = e.target.value)}
-            />
-            <input
-              type="text"
-              defaultValue={todo.place}
-              onChange={(e) => (todo.place = e.target.value)}
-            />
-            <input
-              type="text"
-              defaultValue={todo.text}
-              onChange={(e) => (todo.text = e.target.value)}
-            />
-            <div className={styles.formButtons}>
-              <button type="submit">
-                <SaveIcon className={styles.icon} /> Save
-              </button>
-              <button
-                type="button"
-                onClick={handleActive}
-                className={styles.cancelButton}
-              >
-                <CloseIcon className={styles.icon} /> Cancel
-              </button>
-            </div>
-          </form>
-        ) : (
-          <>
-            <h2 className={styles.date}>
-              Date: {new Date(todo.date).toLocaleDateString()}
-            </h2>
-            <h3 className={styles.time}>Time: {todo.time}</h3>
-            <h3 className={styles.place}>Place: {todo.place}</h3>
-            <h3 className={styles.text}>Text: {todo.text}</h3>
-          </>
-        )}
-      </div>
+    <div className={styles.checkItem}>
+      {isActive ? (
+        <form onSubmit={editTodo} className={styles.form}>
+          <input
+            type="date"
+            defaultValue={new Date(todo.date).toISOString().split("T")[0]}
+            onChange={(e) => (todo.date = e.target.value)}
+            className={styles.input}
+          />
+          <input
+            type="time"
+            defaultValue={todo.time}
+            onChange={(e) => (todo.time = e.target.value)}
+            className={styles.input}
+          />
+          <input
+            type="text"
+            defaultValue={todo.place}
+            onChange={(e) => (todo.place = e.target.value)}
+            className={styles.input}
+          />
+          <input
+            type="text"
+            defaultValue={todo.text}
+            onChange={(e) => (todo.text = e.target.value)}
+            className={styles.input}
+          />
+          <div className={styles.formButtons}>
+            <button type="submit" className={styles.saveButton}>
+              <SaveIcon className={styles.icon} /> Save
+            </button>
+            <button
+              type="button"
+              onClick={handleActive}
+              className={styles.cancelButton}
+            >
+              <CloseIcon className={styles.icon} /> Cancel
+            </button>
+          </div>
+        </form>
+      ) : (
+        <>
+          <h2 className={styles.title}>Date: {new Date(todo.date).toLocaleDateString()}</h2>
+          <p className={styles.details}>Time: {todo.time}</p>
+          <p className={styles.details}>Place: {todo.place}</p>
+          <p className={styles.details}>Text: {todo.text}</p>
+        </>
+      )}
       <div className={styles.todoActions}>
         <FaEdit className={styles.icon} onClick={handleActive} />
         {!isActive && <FaTrash className={styles.icon} onClick={deleteTodo} />}
       </div>
-    </li>
+    </div>
   );
 };
 

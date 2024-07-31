@@ -1,26 +1,40 @@
 .checkItem {
   background-color: #ffffff;
-  border-radius: 10px;
-  padding: 8px;
-  margin-bottom: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: Arial, sans-serif;
 }
 
-.todoContent {
-  flex-grow: 1;
+.checkItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.todoContent p {
-  margin: 3px 0;
-  font-size: 0.9rem;
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.details {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #666;
 }
 
 .todoActions {
+  margin-top: 10px;
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .icon {
@@ -36,48 +50,43 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
 
-.form input {
-  padding: 8px;
+.input {
+  padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 0.9rem;
-  width: 100%;
+  font-size: 1rem;
+  width: calc(100% - 20px);
+}
+
+.input:focus {
+  border-color: #8673f5;
+  outline: none;
 }
 
 .formButtons {
   display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.form button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.saveButton,
+.cancelButton {
   background-color: #8673f5;
   color: white;
   border: none;
-  padding: 8px 12px;
   border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  font-size: 0.9rem;
-  width: 48%;
 }
 
-.form button .icon {
-  margin-right: 5px;
-}
-
-.form button:hover {
+.saveButton:hover,
+.cancelButton:hover {
   background-color: #6a5fc7;
   transform: scale(1.05);
 }
@@ -88,12 +97,4 @@
 
 .cancelButton:hover {
   background-color: #999;
-}
-
-.text,
-.place,
-.time {
-  margin: 5px 0;
-  font-size: 1rem;
-  color: #666;
 }

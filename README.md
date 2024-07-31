@@ -55,7 +55,7 @@ Frontend Developer
 Frontend Developer
 
 **Paolo Caramia**
-Frontend 
+Frontend Developer
 
 **Alberto Palmeri**
 Frontend Developer

@@ -75,10 +75,6 @@ const WalletWrapper = ({ list, cityName }) => {
               <FaSuitcase />
               <span>My Journey</span>
             </Link>
-            <button className={styles.navButton}>
-              <FaStickyNote />
-              <span>My Notes</span>
-            </button>
             <button className={styles.navButtonBudget}>
               <FaMoneyBill />
               <span>Budget</span>

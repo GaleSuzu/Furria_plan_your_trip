@@ -45,6 +45,13 @@ export default function Navbar() {
             >
               About Us
             </Link>
+            <Link
+              href="/copyright"
+              className={styles.dropdownItem}
+              onClick={toggleMenu}
+            >
+              Copyright
+            </Link>
           </div>
         )}
       </div>

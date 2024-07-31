@@ -109,15 +109,6 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <FaSuitcase />
             <span>My Journey</span>
           </button>
-          <button
-            className={`${styles.navButton} ${
-              isNoteVisible ? styles.activeButton : ""
-            }`}
-            onClick={handleNotes}
-          >
-            <FaStickyNote />
-            <span>My Notes</span>
-          </button>
           <Link
             href={`/wallet/${id}?name=${cityName}`}
             className={`${styles.navButton} ${

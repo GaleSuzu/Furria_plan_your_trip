@@ -115,7 +115,7 @@ const CityCard = ({ city, id, onClick, from, to }) => {
               className={styles.cityInput}
             />
           ) : (
-            <h3>{cityName}</h3>
+            <h4>{cityName}</h4>
           )}
           <div className={styles.cityDates}>
             <p>Dal: {new Date(from).toLocaleDateString()}</p>

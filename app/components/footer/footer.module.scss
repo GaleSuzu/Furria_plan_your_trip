@@ -1,5 +1,5 @@
 .footer {
-  background-color: #878FE0;
+  background-color: #878fe0;
   color: white;
   display: flex;
   justify-content: space-around;
@@ -10,6 +10,8 @@
   z-index: 1000;
   max-width: 640px;
   width: 100%;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 .footerButton {
@@ -21,10 +23,7 @@
   cursor: pointer;
 }
 
-.footerButton .inactiveIcon {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.footerButton.active {
+.footerButton:hover {
   font-weight: bold;
+  color: #4f569f;
 }

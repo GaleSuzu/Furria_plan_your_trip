@@ -92,7 +92,7 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             }}
           />
           <div className={styles.cityDetails}>
-            <h1>{cityName}</h1>
+            <h1 className={styles.city}>{cityName}</h1>
             <p>{cityDate.toLocaleDateString()}</p>
             <Countdown date={cityDate} renderer={renderer} />
           </div>

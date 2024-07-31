@@ -61,7 +61,7 @@ const WalletWrapper = ({ list, cityName }) => {
             }}
           />
           <div className={styles.cityDetails}>
-            <h1>{cityName}</h1>
+            <h1 className={styles.city}>{cityName}</h1>
           </div>
         </div>
       </header>
@@ -79,7 +79,7 @@ const WalletWrapper = ({ list, cityName }) => {
               <FaStickyNote />
               <span>My Notes</span>
             </button>
-            <button className={styles.navButton}>
+            <button className={styles.navButtonBudget}>
               <FaMoneyBill />
               <span>Budget</span>
             </button>

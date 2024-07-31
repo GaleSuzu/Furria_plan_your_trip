@@ -27,7 +27,7 @@ Siamo un gruppo di viaggiatori e sviluppatori che hanno unito le loro passioni p
 - **Frontend**: Sviluppato con React.js e Next.js per un rendering lato server e un'ottima esperienza utente.
 - **Stile e Animazioni**: Utilizziamo CSS/SASS per creare animazioni fluide e interazioni con l'interfaccia.
 - **Backend**: Basato su Node.js per la gestione delle API .
-- **Database**: MongoDB come database NoSQL per gestire i dati degli utenti e dei viaggi.
+- **Database**: MongoDB come database per gestire i dati degli utenti e dei viaggi.
 
 ### 📦 Librerie e Strumenti
 

@@ -7,7 +7,7 @@ import { MdAlternateEmail } from "react-icons/md";
 const profile = () => {
   return (
     <div className={styles.profile_container}>
-      <h2 className={styles.profile_name}>Jijen Daisuke</h2>
+      <h2 className={styles.profile_name}>Jigen Daisuke</h2>
 
       <p className={styles.profile_bio}>
         <img className={styles.profile_img} src="/images/jijen.jpg" alt="" />

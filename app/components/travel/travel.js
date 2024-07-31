@@ -5,7 +5,7 @@ import axios from "axios";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
 import Countdown from "react-countdown";
 import CheckList from "../checklist/CheckList";
-import Notes from "../notes/Notes";
+import Notes from "../noteWrapper/NoteWrapper";
 import styles from "./travel.module.scss";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -110,6 +110,14 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             <span>My Journey</span>
           </button>
           <Link
+            href={`/note/${id}?name=${cityName}`}
+            className={styles.navButton}
+            onClick={handleNotes}
+          >
+            <FaStickyNote />
+            <span>My Notes</span>
+          </Link>
+          <Link
             href={`/wallet/${id}?name=${cityName}`}
             className={`${styles.navButton} ${
               isWalletVisible ? styles.activeButton : ""
@@ -130,8 +138,6 @@ const Travel = ({ cityName, cityDate, todos, onAddTodo }) => {
             </div>
           </>
         )}
-        {/* {isWalletVisible && <Budget />} */}
-        {isNoteVisible && <Notes />}
       </div>
     </div>
   );

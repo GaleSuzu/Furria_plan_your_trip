@@ -1,15 +1,15 @@
 "use client";
+import NoteCard from "../noteCard/noteCard";
+import styles from "./NoteWrapper.module.scss";
+import NoteModal from "../noteModal/NoteModal";
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { FaSuitcase, FaStickyNote, FaMoneyBill } from "react-icons/fa";
-import WalletCard from "../walletCard/walletCard";
-import WalletModal from "../walletModal/WalletModal";
-import styles from "./walletwrapper.module.scss";
 import { useParams } from "next/navigation";
 import { globalContext } from "../../(context)/Provider";
 import Link from "next/link";
 
-const WalletWrapper = ({ list, cityName }) => {
+const NoteWrapper = ({ list, cityName }) => {
   const { id } = useParams();
   const { travelData } = useContext(globalContext);
   const [showModal, setShowModal] = useState(false);
@@ -82,15 +82,18 @@ const WalletWrapper = ({ list, cityName }) => {
               <FaStickyNote />
               <span>My Notes</span>
             </Link>
-            <button className={styles.navButtonBudget}>
+            <Link
+              href={`/wallet/${id}?name=${cityName}`}
+              className={styles.navButton}
+            >
               <FaMoneyBill />
               <span>Budget</span>
-            </button>
+            </Link>
           </nav>
         </div>
         <div>
-          {list.map((cost, index) => (
-            <WalletCard key={index} cost={cost} />
+          {list.map((note, index) => (
+            <NoteCard key={index} note={note} />
           ))}
         </div>
         <div className={styles.addButtonContainer}>
@@ -100,10 +103,10 @@ const WalletWrapper = ({ list, cityName }) => {
         </div>
       </div>
       {showModal && (
-        <WalletModal cityId={travelData.cityId} onClose={handleCloseModal} />
+        <NoteModal cityId={travelData.cityId} onClose={handleCloseModal} />
       )}
     </div>
   );
 };
 
-export default WalletWrapper;
+export default NoteWrapper;

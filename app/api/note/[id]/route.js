@@ -1,22 +1,22 @@
 import dbConnection from "../../../utils/dbConnection";
-import User from "@/app/models/User";
+import Note from "../../../models/Note";
 
 export const GET = async (req, { params }) => {
   const { id } = params;
 
   try {
     await dbConnection();
-    const userItem = await User.findById(id);
-    if (!userItem) {
+    const noteItem = await Note.findById(id);
+    if (!noteItem) {
       return new Response(
-        JSON.stringify({ success: false, error: "User not found!" }),
+        JSON.stringify({ success: false, error: "Note not found!" }),
         {
           status: 404,
           headers: { "Content-Type": "application/json" },
         }
       );
     }
-    return new Response(JSON.stringify({ success: true, data: userItem }), {
+    return new Response(JSON.stringify({ success: true, data: noteItem }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
@@ -37,17 +37,17 @@ export const PUT = async (req, { params }) => {
   try {
     await dbConnection();
     const body = await req.json();
-    const userItem = await User.findByIdAndUpdate(id, body, { new: true });
-    if (!userItem) {
+    const noteItem = await Note.findByIdAndUpdate(id, body, { new: true });
+    if (!noteItem) {
       return new Response(
-        JSON.stringify({ success: false, error: "User not found!" }),
+        JSON.stringify({ success: false, error: "Note not found!" }),
         {
           status: 404,
           headers: { "Content-Type": "application/json" },
         }
       );
     }
-    return new Response(JSON.stringify({ success: true, data: userItem }), {
+    return new Response(JSON.stringify({ success: true, data: noteItem }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
@@ -67,10 +67,10 @@ export const DELETE = async (req, { params }) => {
 
   try {
     await dbConnection();
-    const userItem = await User.findByIdAndDelete(id);
-    if (!userItem) {
+    const noteItem = await Note.findByIdAndDelete(id);
+    if (!noteItem) {
       return new Response(
-        JSON.stringify({ success: false, error: "User not found!" }),
+        JSON.stringify({ success: false, error: "Note not found!" }),
         {
           status: 404,
           headers: { "Content-Type": "application/json" },

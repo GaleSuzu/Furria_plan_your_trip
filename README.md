@@ -47,23 +47,23 @@ Apri il tuo browser e vai a: https://furria.vercel.app
 Susanna Palmeri
 
 
-Ruolo: Full Stack Developer
+Ruolo: Frontend Developer
 Roberta Favuzza
 
 
-Ruolo: Full Stack Developer
+Ruolo: Frontend Developer
 Giuseppe Neri
 
 
-Ruolo: Full Stack Developer
+Ruolo: Frontend Developer
 Paolo Caramia
 
 
-Ruolo: Full Stack Developer
+Ruolo: Frontend Developer
 Alberto Palmeri
 
 
-Ruolo: Full Stack Developer
+Ruolo: Frontend Developer
 📞 Contattaci
 Per qualsiasi domanda, problema o suggerimento, non esitare a contattarci. Siamo sempre felici di aiutarti!
 

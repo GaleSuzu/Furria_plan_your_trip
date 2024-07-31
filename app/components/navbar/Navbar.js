@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import { FaBars } from 'react-icons/fa'; 
-import styles from './navbar.module.scss';
-import Link from 'next/link';
-import Avatar from 'boring-avatars'; 
-import AvatarModal from '../avatarmodal/AvatarModal'; 
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import styles from "./navbar.module.scss";
+import Link from "next/link";
+import Avatar from "boring-avatars";
+import AvatarModal from "../avatarmodal/AvatarModal";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
-  const [selectedAvatar, setSelectedAvatar] = useState('marble');
-  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState("marble");
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); 
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const openAvatarModal = () => {
@@ -35,10 +35,16 @@ export default function Navbar() {
         </div>
         <img src="/furrialogo.svg" alt="Furria Logo" className={styles.logo} />
         <FaBars className={styles.menuButton} onClick={toggleMenu} />
-        
+
         {isMenuOpen && (
           <div className={styles.dropdownMenu}>
-            <Link href="/about" className={styles.dropdownItem}>About Us</Link>
+            <Link
+              href="/about"
+              className={styles.dropdownItem}
+              onClick={toggleMenu}
+            >
+              About Us
+            </Link>
           </div>
         )}
       </div>

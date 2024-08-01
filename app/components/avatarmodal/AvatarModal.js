@@ -5,6 +5,11 @@ import styles from "./avatarmodal.module.scss";
 const avatarVariants = ["marble", "beam", "pixel", "sunset", "ring", "bauhaus"];
 
 const AvatarModal = ({ selectedAvatar, setSelectedAvatar, onClose }) => {
+  const handleAvatarClick = (variant) => {
+    setSelectedAvatar(variant);
+    onClose();  
+  };
+
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>
@@ -17,7 +22,7 @@ const AvatarModal = ({ selectedAvatar, setSelectedAvatar, onClose }) => {
             <div
               key={index}
               className={styles.avatarOption}
-              onClick={() => setSelectedAvatar(variant)}
+              onClick={() => handleAvatarClick(variant)}
             >
               <Avatar
                 size={80}

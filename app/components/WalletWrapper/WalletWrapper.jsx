@@ -47,6 +47,11 @@ const WalletWrapper = ({ list, cityName }) => {
     setShowModal(false);
   };
 
+  // Funzione per calcolare il totale delle spese
+  const calculateTotalCost = () => {
+    return list.reduce((total, cost) => total + parseFloat(cost.cost), 0).toFixed(2);
+  };
+
   return (
     <div className={styles.wallet}>
       <header className={styles.header}>
@@ -63,6 +68,9 @@ const WalletWrapper = ({ list, cityName }) => {
           <div className={styles.cityDetails}>
             <h1 className={styles.city}>{cityName}</h1>
           </div>
+        </div>
+        <div className={styles.totalCost}>
+          <h5 className={styles.totalprice}>Total: €{calculateTotalCost()}</h5>
         </div>
       </header>
       <div className={styles.body}>

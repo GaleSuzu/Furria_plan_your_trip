@@ -1,5 +1,5 @@
 import styles from "./walletcard.module.scss";
-import { FaEdit, FaTrash, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,7 +10,6 @@ import {
   FaBus,
   FaHotel,
 } from "react-icons/fa";
-import MapModal from "../mapmodal/MapModal";
 
 const categories = [
   { name: "Food", icon: <FaUtensils /> },
@@ -23,8 +22,6 @@ const categories = [
 const WalletCard = ({ cost }) => {
   const [isActive, setIsActive] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(cost.category);
-  const [place, setPlace] = useState(cost.place || "");
-  const [showMapModal, setShowMapModal] = useState(false);
 
   const handleActive = (e) => {
     e.stopPropagation();
@@ -38,7 +35,6 @@ const WalletCard = ({ cost }) => {
       category: selectedCategory,
       text: cost.text,
       cost: cost.cost,
-      place: place,
     };
 
     try {
@@ -104,24 +100,6 @@ const WalletCard = ({ cost }) => {
             onChange={(e) => (cost.cost = e.target.value)}
             className={styles.input}
           />
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>
-              Place <FaMapMarkerAlt className={styles.icon} />
-            </label>
-            <div className={styles.placeInputContainer}>
-              <input
-                type="text"
-                placeholder="Enter place"
-                value={place}
-                onChange={(e) => setPlace(e.target.value)}
-                className={styles.input}
-              />
-              <FaMapMarkerAlt
-                className={styles.mapIcon}
-                onClick={() => setShowMapModal(true)}
-              />
-            </div>
-          </div>
           <div className={styles.formButtons}>
             <button type="submit" className={styles.saveButton}>
               <SaveIcon className={styles.icon} /> Save
@@ -140,13 +118,6 @@ const WalletCard = ({ cost }) => {
           <h2 className={styles.title}>{cost.text}</h2>
           <p className={styles.details}>Costo: {cost.cost} €</p>
           <p className={styles.details}>Categoria: {cost.category}</p>
-          <p className={styles.details}>
-            Place: {cost.place}{" "}
-            <FaMapMarkerAlt
-              className={styles.icon}
-              onClick={() => setShowMapModal(true)}
-            />
-          </p>
         </>
       )}
 
@@ -154,9 +125,6 @@ const WalletCard = ({ cost }) => {
         <FaEdit className={styles.icon} onClick={handleActive} />
         {!isActive && <FaTrash className={styles.icon} onClick={deleteCost} />}
       </div>
-      {showMapModal && (
-        <MapModal city={place} onClose={() => setShowMapModal(false)} />
-      )}
     </div>
   );
 };

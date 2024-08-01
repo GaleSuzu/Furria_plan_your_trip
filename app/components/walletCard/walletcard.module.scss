@@ -90,29 +90,6 @@
   color: #8673f5;
 }
 
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.placeInputContainer {
-  display: flex;
-  align-items: center;
-}
-
-.mapIcon {
-  margin-left: 10px;
-  cursor: pointer;
-  color: #878fe0;
-  transition: color 0.3s;
-}
-
-.mapIcon:hover {
-  color: #8673f5;
-}
-
 .formButtons {
   display: flex;
   justify-content: flex-end;
@@ -139,8 +116,4 @@
 
 .cancelButton {
   background-color: #ccc;
-}
-
-.cancelButton:hover {
-  background-color: #999;
 }

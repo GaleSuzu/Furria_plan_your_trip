@@ -77,7 +77,7 @@ const NoteWrapper = ({ list, cityName }) => {
             </Link>
             <Link
               href={`/note/${id}?name=${cityName}`}
-              className={styles.navButton}
+              className={styles.navButtonNote}
             >
               <FaStickyNote />
               <span>My Notes</span>

@@ -1,14 +1,16 @@
-import React from 'react';
-import Avatar from 'boring-avatars';
-import styles from './avatarmodal.module.scss';
+import React from "react";
+import Avatar from "boring-avatars";
+import styles from "./avatarmodal.module.scss";
 
-const avatarVariants = ['marble', 'beam', 'pixel', 'sunset', 'ring', 'bauhaus'];
+const avatarVariants = ["marble", "beam", "pixel", "sunset", "ring", "bauhaus"];
 
 const AvatarModal = ({ selectedAvatar, setSelectedAvatar, onClose }) => {
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>
-        <button className={styles.closeButton} onClick={onClose}>×</button>
+        <button className={styles.closeButton} onClick={onClose}>
+          ×
+        </button>
         <h2>Choose Your Avatar</h2>
         <div className={styles.avatarsGrid}>
           {avatarVariants.map((variant, index) => (

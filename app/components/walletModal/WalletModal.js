@@ -12,7 +12,6 @@ const WalletModal = ({ cityId, onClose }) => {
     e.preventDefault();
 
     const costData = {
-      place,
       cost,
       cityId,
       text,
@@ -54,20 +53,12 @@ const WalletModal = ({ cityId, onClose }) => {
         <h2 className={styles.modalTitle}>Aggiungi un costo</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label>Luogo:</label>
-            <input
-              type="text"
-              value={place}
-              onChange={(e) => setPlace(e.target.value)}
-            />
+            <label>Testo:</label>
+            <input type="text" onChange={(e) => setText(e.target.value)} />
           </div>
           <div className={styles.formGroup}>
             <label>Costo:</label>
             <input type="number" onChange={(e) => setCost(e.target.value)} />
-          </div>
-          <div className={styles.formGroup}>
-            <label>Testo:</label>
-            <input type="text" onChange={(e) => setText(e.target.value)} />
           </div>
           <div className={styles.formGroup}>
             <label>Categoria:</label>

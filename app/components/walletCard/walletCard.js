@@ -3,7 +3,13 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
-import { FaUtensils, FaTheaterMasks, FaLandmark, FaBus, FaHotel } from "react-icons/fa";
+import {
+  FaUtensils,
+  FaTheaterMasks,
+  FaLandmark,
+  FaBus,
+  FaHotel,
+} from "react-icons/fa";
 
 const categories = [
   { name: "Food", icon: <FaUtensils /> },

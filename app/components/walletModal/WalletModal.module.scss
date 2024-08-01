@@ -78,6 +78,22 @@
   color: white;
 }
 
+.placeInputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mapIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #878fe0;
+  transition: color 0.3s;
+}
+
+.mapIcon:hover {
+  color: #8673f5;
+}
+
 .buttonGroup {
   display: flex;
   justify-content: space-between;

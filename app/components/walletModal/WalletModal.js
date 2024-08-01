@@ -1,17 +1,20 @@
 import { useState } from "react";
 import styles from "./WalletModal.module.scss";
-import { FaUtensils, FaFilm, FaLandmark, FaBus, FaHotel } from "react-icons/fa";
+import { FaUtensils, FaFilm, FaLandmark, FaBus, FaHotel, FaMapMarkerAlt } from "react-icons/fa";
+import MapModal from "../mapmodal/MapModal";
 
 const WalletModal = ({ cityId, onClose }) => {
   const [place, setPlace] = useState("");
   const [cost, setCost] = useState(null);
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
+  const [showMapModal, setShowMapModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const costData = {
+      place,
       cost,
       cityId,
       text,
@@ -77,6 +80,21 @@ const WalletModal = ({ cityId, onClose }) => {
               ))}
             </div>
           </div>
+          <div className={styles.formGroup}>
+            <label>
+              <FaMapMarkerAlt className={styles.icon} /> Luogo:
+            </label>
+            <div className={styles.placeInputContainer}>
+              <input
+                type="text"
+                placeholder="Enter place"
+                value={place}
+                onChange={(e) => setPlace(e.target.value)}
+                className={styles.input}
+              />
+              <FaMapMarkerAlt className={styles.mapIcon} onClick={() => setShowMapModal(true)} />
+            </div>
+          </div>
           <div className={styles.buttonGroup}>
             <button className={styles.cancelButton} onClick={onClose}>
               Annulla
@@ -87,6 +105,7 @@ const WalletModal = ({ cityId, onClose }) => {
           </div>
         </form>
       </div>
+      {showMapModal && <MapModal city={place} onClose={() => setShowMapModal(false)} />}
     </div>
   );
 };

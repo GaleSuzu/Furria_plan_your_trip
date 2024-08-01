@@ -21,6 +21,18 @@ export default function CityPlan() {
     setCity(e.target.value);
   };
 
+  const handleStartDateChange = (e) => {
+    const newStartDate = e.target.value;
+    setStartDate(newStartDate);
+    if (newStartDate > endDate) {
+      setEndDate(newStartDate);
+    }
+  };
+
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newTripData = {
@@ -49,7 +61,7 @@ export default function CityPlan() {
   return (
     <div className={styles.cityPlan}>
       <h1>Organizza il tuo viaggio</h1>
-      <p>Crea il tuo primo itinerario e preparati al prossimo viaggio</p>
+      <p>Crea il tuo itinerario e preparati al prossimo viaggio</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Dove?</label>
         <div className={styles.cityInputContainer}>
@@ -73,7 +85,8 @@ export default function CityPlan() {
           id="dateStart"
           name="dateStart"
           value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
+          onChange={handleStartDateChange}
+          min={new Date().toISOString().split("T")[0]}
           required
         />
         <label htmlFor="dateEnd">Fine:</label>
@@ -82,7 +95,8 @@ export default function CityPlan() {
           id="dateEnd"
           name="dateEnd"
           value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
+          onChange={handleEndDateChange}
+          min={startDate}
           required
         />
         <button type="submit">Pianifica</button>

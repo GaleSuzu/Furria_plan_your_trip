@@ -55,6 +55,7 @@ const ModaleTodo = ({ cityId, onClose }) => {
             <DatePicker
               selected={date}
               onChange={(date) => setDate(date)}
+              minDate={new Date()}
               className={styles.datePicker}
             />
           </div>

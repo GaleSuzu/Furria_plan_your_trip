@@ -11,11 +11,12 @@ const profile = () => {
 
       <p className={styles.profile_bio}>
         <img className={styles.profile_img} src="/images/jijen.jpg" alt="" />
-        Sono un appassionato viaggiatore, un'anima nomade che trova ispirazione
-        nei viaggi. Con una valigia sempre pronta, esplora il mondo alla ricerca
-        di avventure e nuove prospettive. Mi piace catturare i momenti più belli
-        dei miei viaggi per condividerli con gli altri e creare ricordi
-        indelebili. Il mio obiettivo è ispirare gli altri a "vivere" il mondo...
+        Sono un appassionato viaggiatore, un&apos;anima nomade che trova
+        ispirazione nei viaggi. Con una valigia sempre pronta, esplora il mondo
+        alla ricerca di avventure e nuove prospettive. Mi piace catturare i
+        momenti più belli dei miei viaggi per condividerli con gli altri e
+        creare ricordi indelebili. Il mio obiettivo è ispirare gli altri a
+        &quot;vivere&quot; il mondo...
       </p>
       <div className={styles.profile_contatti}>
         <p>

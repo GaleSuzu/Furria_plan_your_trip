@@ -75,9 +75,19 @@ const About = () => {
       </section>
       {isModalOpen && (
         <div className={styles.modalOverlay} onClick={handleCloseModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <Image src={selectedImage} alt="Modal Image" width={500} height={500} />
-            <button className={styles.closeButton} onClick={handleCloseModal}>X</button>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={selectedImage}
+              alt="Modal Image"
+              width={500}
+              height={500}
+            />
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              X
+            </button>
           </div>
         </div>
       )}
@@ -96,7 +106,7 @@ const developers = [
   {
     name: "Roberta Favuzza",
     role: "Frontend Developer",
-    image: "/Images/noi/Roberta.jpg",
+    image: "/images/noi/Roberta.jpg",
     github: "https://github.com/robertafavuzza",
     linkedin: "https://www.linkedin.com/in/roberta-favuzza",
   },
